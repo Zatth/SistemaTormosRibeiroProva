@@ -68,7 +68,7 @@ public class JFrmPincipal extends javax.swing.JFrame {
         });
 
         jMnuCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        jMnuCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cliente.png"))); // NOI18N
+        jMnuCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Captura de pantalla 2024-11-25 183701.png"))); // NOI18N
         jMnuCliente.setMnemonic('c');
         jMnuCliente.setText("Clientes");
         jMnuCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +79,7 @@ public class JFrmPincipal extends javax.swing.JFrame {
         jMenu1.add(jMnuCliente);
 
         jMnuFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        jMnuFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cliente.png"))); // NOI18N
+        jMnuFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Captura de pantalla 2024-11-25 183508.png"))); // NOI18N
         jMnuFuncionario.setMnemonic('n');
         jMnuFuncionario.setText("Funcionários");
         jMnuFuncionario.addActionListener(new java.awt.event.ActionListener() {

@@ -4,8 +4,6 @@
  */
 package view;
 
-import bean.ProdutoZht;
-import dao.ProdutoZhtDao;
 import javax.swing.JOptionPane;
 import tools.Util;
 

@@ -27,7 +27,7 @@
                   <KeyStroke key="Alt+C"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/cliente.png"/>
+                  <Image iconType="3" name="/img/Captura de pantalla 2024-11-25 183701.png"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="99"/>
                 <Property name="text" type="java.lang.String" value="Clientes"/>
@@ -42,7 +42,7 @@
                   <KeyStroke key="Alt+N"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/cliente.png"/>
+                  <Image iconType="3" name="/img/Captura de pantalla 2024-11-25 183508.png"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="110"/>
                 <Property name="text" type="java.lang.String" value="Funcion&#xe1;rios"/>
