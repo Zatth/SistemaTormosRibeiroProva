@@ -5,7 +5,7 @@
  */
 package dao;
 
-import bean.Clientes;
+import bean.FuncionarioIar;
 import java.util.ArrayList;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -44,7 +44,7 @@ public class FuncionarioIarDAO extends DAO_Abstract {
     @Override
     public Object list(int id) { //aqui o parâmetro
        session.beginTransaction(); // comecei uma transaçao
-        Criteria criteria = session.createCriteria(Clientes.class); // Criteria é uma classe do hibernate para fazer consultas, to criando ela
+        Criteria criteria = session.createCriteria(FuncionarioIar.class); // Criteria é uma classe do hibernate para fazer consultas, to criando ela
         // basicamente um Select * from Usuarios
         criteria.add(Restrictions.eq("idclientes", id)); // o ID vem do parâmetro, essa linha é tipo um where
         ArrayList lista = (ArrayList) criteria.list(); // é um bean
@@ -55,7 +55,7 @@ public class FuncionarioIarDAO extends DAO_Abstract {
     @Override
     public ArrayList listAll() {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(Clientes.class);
+        Criteria criteria = session.createCriteria(FuncionarioIar.class);
         ArrayList lista = (ArrayList) criteria.list();
         session.getTransaction().commit();
         return lista;
