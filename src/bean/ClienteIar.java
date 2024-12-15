@@ -28,7 +28,7 @@ import javax.persistence.UniqueConstraint;
 public class ClienteIar  implements java.io.Serializable {
 
 
-     private Byte idClienteIar;
+     private int idClienteIar;
      private String nomeClienteIar;
      private String cpfClienteIar;
      private String rgClienteIar;
@@ -36,7 +36,7 @@ public class ClienteIar  implements java.io.Serializable {
      private String estadoCivilClienteIar;
      private String emailClienteIar;
      private String ruaClienteIar;
-     private byte numeroCasaClienteIar;
+     private int numeroCasaClienteIar;
      private String bairroClienteIar;
      private String complementoClienteIar;
      private String estadoClienteIar;
@@ -48,7 +48,7 @@ public class ClienteIar  implements java.io.Serializable {
     }
 
 	
-    public ClienteIar(String nomeClienteIar, String cpfClienteIar, String rgClienteIar, String estadoCivilClienteIar, String emailClienteIar, String ruaClienteIar, byte numeroCasaClienteIar, String bairroClienteIar, String complementoClienteIar, String estadoClienteIar, String paisClienteIar, String celularClienteIar) {
+    public ClienteIar(String nomeClienteIar, String cpfClienteIar, String rgClienteIar, String estadoCivilClienteIar, String emailClienteIar, String ruaClienteIar, int numeroCasaClienteIar, String bairroClienteIar, String complementoClienteIar, String estadoClienteIar, String paisClienteIar, String celularClienteIar) {
         this.nomeClienteIar = nomeClienteIar;
         this.cpfClienteIar = cpfClienteIar;
         this.rgClienteIar = rgClienteIar;
@@ -62,7 +62,7 @@ public class ClienteIar  implements java.io.Serializable {
         this.paisClienteIar = paisClienteIar;
         this.celularClienteIar = celularClienteIar;
     }
-    public ClienteIar(String nomeClienteIar, String cpfClienteIar, String rgClienteIar, Date dataNascClienteIar, String estadoCivilClienteIar, String emailClienteIar, String ruaClienteIar, byte numeroCasaClienteIar, String bairroClienteIar, String complementoClienteIar, String estadoClienteIar, String paisClienteIar, String telefoneClienteIar, String celularClienteIar, Set vendasClientesZhts, Set vendasZhts) {
+    public ClienteIar(String nomeClienteIar, String cpfClienteIar, String rgClienteIar, Date dataNascClienteIar, String estadoCivilClienteIar, String emailClienteIar, String ruaClienteIar, int numeroCasaClienteIar, String bairroClienteIar, String complementoClienteIar, String estadoClienteIar, String paisClienteIar, String telefoneClienteIar, String celularClienteIar, Set vendasClientesZhts, Set vendasZhts) {
        this.nomeClienteIar = nomeClienteIar;
        this.cpfClienteIar = cpfClienteIar;
        this.rgClienteIar = rgClienteIar;
@@ -83,11 +83,11 @@ public class ClienteIar  implements java.io.Serializable {
 
     
     @Column(name="id_cliente_iar", unique=true, nullable=false)
-    public Byte getIdClienteIar() {
+    public int getIdClienteIar() {
         return this.idClienteIar;
     }
     
-    public void setIdClienteIar(Byte idClienteIar) {
+    public void setIdClienteIar(int idClienteIar) {
         this.idClienteIar = idClienteIar;
     }
 
@@ -163,11 +163,11 @@ public class ClienteIar  implements java.io.Serializable {
 
     
     @Column(name="numero_casa_cliente_iar", nullable=false)
-    public byte getNumeroCasaClienteIar() {
+    public int getNumeroCasaClienteIar() {
         return this.numeroCasaClienteIar;
     }
     
-    public void setNumeroCasaClienteIar(byte numeroCasaClienteIar) {
+    public void setNumeroCasaClienteIar(int numeroCasaClienteIar) {
         this.numeroCasaClienteIar = numeroCasaClienteIar;
     }
 

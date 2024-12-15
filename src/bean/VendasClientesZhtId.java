@@ -12,13 +12,13 @@ import javax.persistence.Embeddable;
 public class VendasClientesZhtId  implements java.io.Serializable {
 
 
-     private byte vendasZht;
-     private byte clienteZht;
+     private int vendasZht;
+     private int clienteZht;
 
     public VendasClientesZhtId() {
     }
 
-    public VendasClientesZhtId(byte vendasZht, byte clienteZht) {
+    public VendasClientesZhtId(int vendasZht, int clienteZht) {
        this.vendasZht = vendasZht;
        this.clienteZht = clienteZht;
     }
@@ -26,21 +26,21 @@ public class VendasClientesZhtId  implements java.io.Serializable {
 
 
     @Column(name="vendas_zht", nullable=false)
-    public byte getVendasZht() {
+    public int getVendasZht() {
         return this.vendasZht;
     }
     
-    public void setVendasZht(byte vendasZht) {
+    public void setVendasZht(int vendasZht) {
         this.vendasZht = vendasZht;
     }
 
 
     @Column(name="cliente_zht", nullable=false)
-    public byte getClienteZht() {
+    public int getClienteZht() {
         return this.clienteZht;
     }
     
-    public void setClienteZht(byte clienteZht) {
+    public void setClienteZht(int clienteZht) {
         this.clienteZht = clienteZht;
     }
 

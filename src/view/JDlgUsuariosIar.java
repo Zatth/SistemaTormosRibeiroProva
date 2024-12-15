@@ -4,6 +4,7 @@
  */
 package view;
 
+import bean.UsuariosIar;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
 import tools.Util;
@@ -35,6 +36,31 @@ public class JDlgUsuariosIar extends javax.swing.JDialog {
         Util.habilitar(true, jBtnAlterar, jBtnIncluir, jBtnExcluir, jBtnPesquisar);
         Util.habilitar(false,jFtmtCpf, jTxtDataNasc,  jTxtNome, jTxtCodigo, jTxtApelido, jPwfSenha, jCboNivel, jChbAtivo, jBtnCancelar, jBtnConfirmar);
     }
+    public UsuariosIar viewBean() {
+    UsuariosIar usuario = new UsuariosIar();
+    
+    usuario.setIdUsuariosIar(Util.strToInt(jTxtCodigo.getText())); // Converte String para int
+    usuario.setNomeUsuarioIar(jTxtNome.getText());
+    usuario.setApelidoIar(jTxtApelido.getText());
+    usuario.setCpfIar(jFtmtCpf.getText());
+    usuario.setDataNascimentoIar(Util.strToDate(jTxtDataNasc.getText())); // Converte String para Date
+    usuario.setSenhaIar(new String(jPwfSenha.getPassword())); // Obtém a senha do JPasswordField
+    usuario.setNivelIar(jCboNivel.getSelectedItem().toString()); // Obtém o valor selecionado no ComboBox
+    usuario.setAtivoIar(jChbAtivo.isSelected() ? "S" : "N"); // "S" para ativo, "N" para inativo
+    
+    return usuario;
+}
+
+public void beanView(UsuariosIar usuario) {
+    jTxtCodigo.setText(Util.intToStr(usuario.getIdUsuariosIar())); // Converte int para String
+    jTxtNome.setText(usuario.getNomeUsuarioIar());
+    jTxtApelido.setText(usuario.getApelidoIar());
+    jFtmtCpf.setText(usuario.getCpfIar());
+    jTxtDataNasc.setText(Util.dateToStr(usuario.getDataNascimentoIar())); // Converte Date para String
+    jPwfSenha.setText(usuario.getSenhaIar());
+    jCboNivel.setSelectedItem(usuario.getNivelIar()); // Seleciona o nível correspondente no ComboBox
+    jChbAtivo.setSelected("S".equals(usuario.getAtivoIar())); // Marca se ativo for "S"
+}
 
     /**
      * This method is called from within the constructor to initialize the form.

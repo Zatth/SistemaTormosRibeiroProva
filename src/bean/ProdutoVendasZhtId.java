@@ -12,13 +12,13 @@ import javax.persistence.Embeddable;
 public class ProdutoVendasZhtId  implements java.io.Serializable {
 
 
-     private byte fkProdutoZht;
-     private byte fkVendasZht;
+     private int fkProdutoZht;
+     private int fkVendasZht;
 
     public ProdutoVendasZhtId() {
     }
 
-    public ProdutoVendasZhtId(byte fkProdutoZht, byte fkVendasZht) {
+    public ProdutoVendasZhtId(int fkProdutoZht, int fkVendasZht) {
        this.fkProdutoZht = fkProdutoZht;
        this.fkVendasZht = fkVendasZht;
     }
@@ -26,21 +26,21 @@ public class ProdutoVendasZhtId  implements java.io.Serializable {
 
 
     @Column(name="fk_produto_zht", nullable=false)
-    public byte getFkProdutoZht() {
+    public int getFkProdutoZht() {
         return this.fkProdutoZht;
     }
     
-    public void setFkProdutoZht(byte fkProdutoZht) {
+    public void setFkProdutoZht(int fkProdutoZht) {
         this.fkProdutoZht = fkProdutoZht;
     }
 
 
     @Column(name="fk_vendas_zht", nullable=false)
-    public byte getFkVendasZht() {
+    public int getFkVendasZht() {
         return this.fkVendasZht;
     }
     
-    public void setFkVendasZht(byte fkVendasZht) {
+    public void setFkVendasZht(int fkVendasZht) {
         this.fkVendasZht = fkVendasZht;
     }
 

@@ -4,6 +4,7 @@
  */
 package view;
 
+import bean.FuncionarioIar;
 import javax.swing.JOptionPane;
 import tools.Util;
 
@@ -24,6 +25,32 @@ public class JDlgFuncionarioIar extends javax.swing.JDialog {
             Util.habilitar(false,jCboFuncao, jTxtNome, jTxtRua, jTxtNumero,jTxtId,jTxtEstado,jTxtComplemento,jTxtBairro,jBtnCancelar, jBtnConfirmar);
         Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnPesquisar, jBtnIncluir);
     }
+    public FuncionarioIar viewBean() {
+    FuncionarioIar funcionario = new FuncionarioIar();
+    
+    funcionario.setIdFuncionarioIar(Util.strToInt(jTxtId.getText())); // Converte String para Byte
+    funcionario.setNomeFuncionarioIar(jTxtNome.getText());
+    funcionario.setRuaFuncionarioIar(jTxtRua.getText());
+    funcionario.setBairroFuncionarioIar(jTxtBairro.getText());
+    funcionario.setEstadoFuncionarioIar(jTxtEstado.getText());
+    funcionario.setComplementoFuncionarioIar(jTxtComplemento.getText());
+    funcionario.setNumCasaFuncionarioIar(Util.strToInt(jTxtNumero.getText())); // Converte String para int
+    funcionario.setFuncaoFuncionarioIar(jCboFuncao.getSelectedItem().toString()); // Obtém o valor selecionado no ComboBox
+    
+    return funcionario;
+}
+
+public void beanView(FuncionarioIar funcionario) {
+    jTxtId.setText(Util.IntToStr(funcionario.getIdFuncionarioIar())); // Converte Byte para String
+    jTxtNome.setText(funcionario.getNomeFuncionarioIar());
+    jTxtRua.setText(funcionario.getRuaFuncionarioIar());
+    jTxtBairro.setText(funcionario.getBairroFuncionarioIar());
+    jTxtEstado.setText(funcionario.getEstadoFuncionarioIar());
+    jTxtComplemento.setText(funcionario.getComplementoFuncionarioIar());
+    jTxtNumero.setText(Util.intToStr(funcionario.getNumCasaFuncionarioIar())); // Converte int para String
+    jCboFuncao.setSelectedItem(funcionario.getFuncaoFuncionarioIar()); // Seleciona o valor correspondente no ComboBox
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.

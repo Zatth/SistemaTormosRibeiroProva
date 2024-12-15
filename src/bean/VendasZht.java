@@ -27,10 +27,10 @@ import javax.persistence.TemporalType;
 public class VendasZht  implements java.io.Serializable {
 
 
-     private byte idVendasZht;
+     private int idVendasZht;
      private ClienteIar clienteIar;
      private FuncionarioIar funcionarioIar;
-     private byte quantidadeVendaZht;
+     private int quantidadeVendaZht;
      private double valorVendaZht;
      private Date dataVendaZht;
      private String pagamentoVendaZht;
@@ -40,7 +40,7 @@ public class VendasZht  implements java.io.Serializable {
     }
 
 	
-    public VendasZht(byte idVendasZht, ClienteIar clienteIar, FuncionarioIar funcionarioIar, byte quantidadeVendaZht, double valorVendaZht, Date dataVendaZht, String pagamentoVendaZht) {
+    public VendasZht(int idVendasZht, ClienteIar clienteIar, FuncionarioIar funcionarioIar, int quantidadeVendaZht, double valorVendaZht, Date dataVendaZht, String pagamentoVendaZht) {
         this.idVendasZht = idVendasZht;
         this.clienteIar = clienteIar;
         this.funcionarioIar = funcionarioIar;
@@ -49,7 +49,7 @@ public class VendasZht  implements java.io.Serializable {
         this.dataVendaZht = dataVendaZht;
         this.pagamentoVendaZht = pagamentoVendaZht;
     }
-    public VendasZht(byte idVendasZht, ClienteIar clienteIar, FuncionarioIar funcionarioIar, byte quantidadeVendaZht, double valorVendaZht, Date dataVendaZht, String pagamentoVendaZht, Set vendasClientesZhts) {
+    public VendasZht(int idVendasZht, ClienteIar clienteIar, FuncionarioIar funcionarioIar, int quantidadeVendaZht, double valorVendaZht, Date dataVendaZht, String pagamentoVendaZht, Set vendasClientesZhts) {
        this.idVendasZht = idVendasZht;
        this.clienteIar = clienteIar;
        this.funcionarioIar = funcionarioIar;
@@ -64,11 +64,11 @@ public class VendasZht  implements java.io.Serializable {
 
     
     @Column(name="id_vendas_zht", unique=true, nullable=false)
-    public byte getIdVendasZht() {
+    public int getIdVendasZht() {
         return this.idVendasZht;
     }
     
-    public void setIdVendasZht(byte idVendasZht) {
+    public void setIdVendasZht(int idVendasZht) {
         this.idVendasZht = idVendasZht;
     }
 
@@ -94,11 +94,11 @@ public class VendasZht  implements java.io.Serializable {
 
     
     @Column(name="quantidade_venda_zht", nullable=false)
-    public byte getQuantidadeVendaZht() {
+    public int getQuantidadeVendaZht() {
         return this.quantidadeVendaZht;
     }
     
-    public void setQuantidadeVendaZht(byte quantidadeVendaZht) {
+    public void setQuantidadeVendaZht(int quantidadeVendaZht) {
         this.quantidadeVendaZht = quantidadeVendaZht;
     }
 

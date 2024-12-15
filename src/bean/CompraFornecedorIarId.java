@@ -12,13 +12,13 @@ import javax.persistence.Embeddable;
 public class CompraFornecedorIarId  implements java.io.Serializable {
 
 
-     private byte fkCompraIar;
-     private byte fkFornecedorIar;
+     private int fkCompraIar;
+     private int fkFornecedorIar;
 
     public CompraFornecedorIarId() {
     }
 
-    public CompraFornecedorIarId(byte fkCompraIar, byte fkFornecedorIar) {
+    public CompraFornecedorIarId(int fkCompraIar, int fkFornecedorIar) {
        this.fkCompraIar = fkCompraIar;
        this.fkFornecedorIar = fkFornecedorIar;
     }
@@ -26,21 +26,21 @@ public class CompraFornecedorIarId  implements java.io.Serializable {
 
 
     @Column(name="fk_compra_iar", nullable=false)
-    public byte getFkCompraIar() {
+    public int getFkCompraIar() {
         return this.fkCompraIar;
     }
     
-    public void setFkCompraIar(byte fkCompraIar) {
+    public void setFkCompraIar(int fkCompraIar) {
         this.fkCompraIar = fkCompraIar;
     }
 
 
     @Column(name="fk_fornecedor_iar", nullable=false)
-    public byte getFkFornecedorIar() {
+    public int getFkFornecedorIar() {
         return this.fkFornecedorIar;
     }
     
-    public void setFkFornecedorIar(byte fkFornecedorIar) {
+    public void setFkFornecedorIar(int fkFornecedorIar) {
         this.fkFornecedorIar = fkFornecedorIar;
     }
 

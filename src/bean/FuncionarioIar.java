@@ -22,20 +22,20 @@ import javax.persistence.Table;
 public class FuncionarioIar  implements java.io.Serializable {
 
 
-     private Byte idFuncionarioIar;
+     private int idFuncionarioIar;
      private String nomeFuncionarioIar;
      private String ruaFuncionarioIar;
      private String bairroFuncionarioIar;
      private String estadoFuncionarioIar;
      private String complementoFuncionarioIar;
-     private byte numCasaFuncionarioIar;
+     private int numCasaFuncionarioIar;
      private String funcaoFuncionarioIar;
 
     public FuncionarioIar() {
     }
 
 	
-    public FuncionarioIar(String nomeFuncionarioIar, String ruaFuncionarioIar, String bairroFuncionarioIar, String estadoFuncionarioIar, String complementoFuncionarioIar, byte numCasaFuncionarioIar, String funcaoFuncionarioIar) {
+    public FuncionarioIar(String nomeFuncionarioIar, String ruaFuncionarioIar, String bairroFuncionarioIar, String estadoFuncionarioIar, String complementoFuncionarioIar, int numCasaFuncionarioIar, String funcaoFuncionarioIar) {
         this.nomeFuncionarioIar = nomeFuncionarioIar;
         this.ruaFuncionarioIar = ruaFuncionarioIar;
         this.bairroFuncionarioIar = bairroFuncionarioIar;
@@ -44,7 +44,7 @@ public class FuncionarioIar  implements java.io.Serializable {
         this.numCasaFuncionarioIar = numCasaFuncionarioIar;
         this.funcaoFuncionarioIar = funcaoFuncionarioIar;
     }
-    public FuncionarioIar(String nomeFuncionarioIar, String ruaFuncionarioIar, String bairroFuncionarioIar, String estadoFuncionarioIar, String complementoFuncionarioIar, byte numCasaFuncionarioIar, String funcaoFuncionarioIar, Set compraIars, Set vendasZhts) {
+    public FuncionarioIar(String nomeFuncionarioIar, String ruaFuncionarioIar, String bairroFuncionarioIar, String estadoFuncionarioIar, String complementoFuncionarioIar, int numCasaFuncionarioIar, String funcaoFuncionarioIar, Set compraIars, Set vendasZhts) {
        this.nomeFuncionarioIar = nomeFuncionarioIar;
        this.ruaFuncionarioIar = ruaFuncionarioIar;
        this.bairroFuncionarioIar = bairroFuncionarioIar;
@@ -59,11 +59,11 @@ public class FuncionarioIar  implements java.io.Serializable {
 
     
     @Column(name="id_funcionario_iar", unique=true, nullable=false)
-    public Byte getIdFuncionarioIar() {
+    public int getIdFuncionarioIar() {
         return this.idFuncionarioIar;
     }
     
-    public void setIdFuncionarioIar(Byte idFuncionarioIar) {
+    public void setIdFuncionarioIar(int idFuncionarioIar) {
         this.idFuncionarioIar = idFuncionarioIar;
     }
 
@@ -119,11 +119,11 @@ public class FuncionarioIar  implements java.io.Serializable {
 
     
     @Column(name="num_casa_funcionario_iar", nullable=false)
-    public byte getNumCasaFuncionarioIar() {
+    public int getNumCasaFuncionarioIar() {
         return this.numCasaFuncionarioIar;
     }
     
-    public void setNumCasaFuncionarioIar(byte numCasaFuncionarioIar) {
+    public void setNumCasaFuncionarioIar(int numCasaFuncionarioIar) {
         this.numCasaFuncionarioIar = numCasaFuncionarioIar;
     }
 

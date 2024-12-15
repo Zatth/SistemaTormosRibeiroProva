@@ -3,7 +3,6 @@ package bean;
 
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +12,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,7 +26,7 @@ import javax.persistence.TemporalType;
 public class CompraIar  implements java.io.Serializable {
 
 
-     private Byte idCompraIar;
+     private int idCompraIar;
      private FuncionarioIar funcionarioIar;
      private Date dataIar;
      private double valorIar;
@@ -56,11 +54,11 @@ public class CompraIar  implements java.io.Serializable {
 
     
     @Column(name="id_compra_iar", unique=true, nullable=false)
-    public Byte getIdCompraIar() {
+    public int getIdCompraIar() {
         return this.idCompraIar;
     }
     
-    public void setIdCompraIar(Byte idCompraIar) {
+    public void setIdCompraIar(int idCompraIar) {
         this.idCompraIar = idCompraIar;
     }
 
@@ -102,6 +100,14 @@ public class CompraIar  implements java.io.Serializable {
     
     public void setPagamentoCompraIar(String pagamentoCompraIar) {
         this.pagamentoCompraIar = pagamentoCompraIar;
+    }
+
+    public void setClienteIar(ClienteIar clienteIar) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Object getClienteIar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

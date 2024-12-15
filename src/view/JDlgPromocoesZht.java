@@ -5,6 +5,7 @@
 package view;
 
 import bean.ProdutoZht;
+import bean.PromocoesZht;
 import javax.swing.JOptionPane;
 import tools.Util;
 
@@ -29,6 +30,32 @@ public class JDlgPromocoesZht extends javax.swing.JDialog {
         Util.limpar(jTxtDesconto, jTxtDescricao, jTxtNome,jCboStatus, jTxtDescricao,jTxtTipo,
                 jTxtId, jFmtDataInicio,jFmtDataTermino);
     }
+    public PromocoesZht viewBean() {
+    PromocoesZht promocao = new PromocoesZht();
+    
+    promocao.setIdpromocoesZht(Util.strToInt(jTxtId.getText())); // Converte String para int
+    promocao.setNomeZht(jTxtNome.getText());
+    promocao.setDataInicioZht(Util.strToDate(jFmtDataInicio.getText())); // Converte String para Date
+    promocao.setDataTerminoZht(Util.strToDate(jFmtDataTermino.getText())); // Converte String para Date
+    promocao.setTipoZht(jTxtTipo.getText());
+    promocao.setDescontoZht(Util.strToInt(jTxtDesconto.getText())); // Converte String para int
+    promocao.setStatusZht(jCboStatus.getSelectedIndex()); // Assume que o índice do ComboBox reflete o status
+    promocao.setDescricaoZht(jTxtDescricao.getText());
+    
+    return promocao;
+}
+
+public void beanView(PromocoesZht promocao) {
+    jTxtId.setText(Util.intToStr(promocao.getIdpromocoesZht())); // Converte int para String
+    jTxtNome.setText(promocao.getNomeZht());
+    jFmtDataInicio.setText(Util.dateToStr(promocao.getDataInicioZht())); // Converte Date para String
+    jFmtDataTermino.setText(Util.dateToStr(promocao.getDataTerminoZht())); // Converte Date para String
+    jTxtTipo.setText(promocao.getTipoZht());
+    jTxtDesconto.setText(Util.intToStr(promocao.getDescontoZht())); // Converte int para String
+    jCboStatus.setSelectedIndex(promocao.getStatusZht()); // Seleciona o índice correspondente no ComboBox
+    jTxtDescricao.setText(promocao.getDescricaoZht());
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.

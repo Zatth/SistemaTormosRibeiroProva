@@ -1,6 +1,6 @@
 package view;
 
-import bean.ClienteIar;
+import bean.FornecedorZht;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -8,7 +8,7 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author u08439411111
  */
-public class ControllerClienteIar extends AbstractTableModel {
+public class ControllerFornecedorZht extends AbstractTableModel {
 
     private List lista;
 
@@ -16,8 +16,8 @@ public class ControllerClienteIar extends AbstractTableModel {
         this.lista = lista;
     }
     
-    public ClienteIar getBean(int rowIndex){
-    return (ClienteIar) lista.get(rowIndex);
+    public FornecedorZht getBean(int rowIndex){
+    return (FornecedorZht) lista.get(rowIndex);
             }
 
     @Override
@@ -32,19 +32,20 @@ public class ControllerClienteIar extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        ClienteIar cliente = (ClienteIar) lista.get(rowIndex);
+        FornecedorZht fornecedor = (FornecedorZht) lista.get(rowIndex);
+        
         if (columnIndex == 0) {
-            return cliente.getIdClienteIar();
+            return fornecedor.getIdfornecedorZht();
         }
         if (columnIndex == 1) {
-            return cliente.getNomeClienteIar();
+            return fornecedor.getNomeZht();
         }
         if (columnIndex == 2) {
-            return cliente.getCpfClienteIar();
+            return fornecedor.getCnpjZht();
         }
-        if (columnIndex == 3) {
-           return cliente.getRgClienteIar();
-       } 
+       if (columnIndex == 3) {
+            return fornecedor.getEmailZht();
+        } 
         return "Sem dados"; // Retorno padrão caso o índice da coluna seja inválido
     }
 
@@ -57,10 +58,10 @@ public class ControllerClienteIar extends AbstractTableModel {
             return "Nome";
         }
         if (columnIndex == 2) {
-            return "CPF";
+            return "CNPJ";
         }
         if (columnIndex == 3) {
-            return "RG";
+            return "Email";
         }
         return "";
     }

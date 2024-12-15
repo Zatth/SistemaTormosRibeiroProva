@@ -4,9 +4,13 @@
  */
 package tools;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -33,6 +37,62 @@ public class Util {
             ((JCheckBox) comp[i]).setSelected(false);
             }
         }
+    }
+   
+   // daqui pra baixo catei do dudu
+    public static int strToInt(String cad) {
+         try {
+            return Integer.parseInt(cad.trim());
+         } catch (NumberFormatException e) {
+            mostrar("Erro: não é possível converter '" + cad + "' para inteiro.");
+            return 0;
+         }
+     }
+     
+     public static String intToStr (int num) {
+         return String.valueOf(num);
+     }
+     
+     public static double strToDouble(String cad) {
+         try {
+            return Double.parseDouble(cad.trim());
+         } catch (NumberFormatException e) {
+            mostrar("Erro: não é possível converter '" + cad + "' para double.");
+            return 0.0;
+         }
+     }
+     
+     public static String doubleToStr (double num) {
+         return String.valueOf(num);
+     }
+     
+     public static Date strToDate(String cad) {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            
+            try {
+                return sdf.parse(cad.trim());
+            } catch (ParseException e) {
+                mostrar("Erro: não é possível converter '" + cad + "' para data.");
+                return null;
+            }
+     }
+     
+     public static String dateToStr (Date data) {
+         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+         return sdf.format(data);
+     }
+     
+     public static void mostrar(String mensagem) {
+         JOptionPane.showMessageDialog(null, mensagem);
+     }
+     
+     public static boolean perguntar(String mensagem) {
+         int resposta = JOptionPane.showConfirmDialog(null, mensagem, "Confirmação", JOptionPane.YES_NO_OPTION);
+         return resposta == JOptionPane.YES_OPTION;
+     }
+
+    public static String IntToStr(int idFuncionarioIar) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

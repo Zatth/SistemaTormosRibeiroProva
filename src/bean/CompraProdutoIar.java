@@ -25,12 +25,12 @@ public class CompraProdutoIar  implements java.io.Serializable {
      private CompraProdutoIarId id;
      private CompraIar compraIar;
      private ProdutoZht produtoZht;
-     private byte quantidadeIar;
+     private int quantidadeIar;
 
     public CompraProdutoIar() {
     }
 
-    public CompraProdutoIar(CompraProdutoIarId id, CompraIar compraIar, ProdutoZht produtoZht, byte quantidadeIar) {
+    public CompraProdutoIar(CompraProdutoIarId id, CompraIar compraIar, ProdutoZht produtoZht, int quantidadeIar) {
        this.id = id;
        this.compraIar = compraIar;
        this.produtoZht = produtoZht;
@@ -73,11 +73,11 @@ public class CompraProdutoIar  implements java.io.Serializable {
 
     
     @Column(name="quantidade_iar", nullable=false)
-    public byte getQuantidadeIar() {
+    public int getQuantidadeIar() {
         return this.quantidadeIar;
     }
     
-    public void setQuantidadeIar(byte quantidadeIar) {
+    public void setQuantidadeIar(int quantidadeIar) {
         this.quantidadeIar = quantidadeIar;
     }
 

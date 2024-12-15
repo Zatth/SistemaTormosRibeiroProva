@@ -1,6 +1,6 @@
 package view;
 
-import bean.ClienteIar;
+import bean.PromocoesZht;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -8,7 +8,7 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author u08439411111
  */
-public class ControllerClienteIar extends AbstractTableModel {
+public class ControllerPromocoesZht extends AbstractTableModel {
 
     private List lista;
 
@@ -16,8 +16,8 @@ public class ControllerClienteIar extends AbstractTableModel {
         this.lista = lista;
     }
     
-    public ClienteIar getBean(int rowIndex){
-    return (ClienteIar) lista.get(rowIndex);
+    public PromocoesZht getBean(int rowIndex){
+    return (PromocoesZht) lista.get(rowIndex);
             }
 
     @Override
@@ -32,18 +32,18 @@ public class ControllerClienteIar extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        ClienteIar cliente = (ClienteIar) lista.get(rowIndex);
+        PromocoesZht promocoes = (PromocoesZht) lista.get(rowIndex);
         if (columnIndex == 0) {
-            return cliente.getIdClienteIar();
+            return promocoes.getIdpromocoesZht();
         }
         if (columnIndex == 1) {
-            return cliente.getNomeClienteIar();
+            return promocoes.getDataInicioZht();
         }
         if (columnIndex == 2) {
-            return cliente.getCpfClienteIar();
+            return promocoes.getTipoZht();
         }
         if (columnIndex == 3) {
-           return cliente.getRgClienteIar();
+           return promocoes.getDescontoZht();
        } 
         return "Sem dados"; // Retorno padrão caso o índice da coluna seja inválido
     }
@@ -54,13 +54,13 @@ public class ControllerClienteIar extends AbstractTableModel {
             return "Código";
         }
         if (columnIndex == 1) {
-            return "Nome";
+            return "Data";
         }
         if (columnIndex == 2) {
-            return "CPF";
+            return "Tipo";
         }
         if (columnIndex == 3) {
-            return "RG";
+            return "Desconto";
         }
         return "";
     }

@@ -25,12 +25,12 @@ public class VendasClientesZht  implements java.io.Serializable {
      private VendasClientesZhtId id;
      private ClienteIar clienteIar;
      private VendasZht vendasZht;
-     private byte quantidadeZht;
+     private int quantidadeZht;
 
     public VendasClientesZht() {
     }
 
-    public VendasClientesZht(VendasClientesZhtId id, ClienteIar clienteIar, VendasZht vendasZht, byte quantidadeZht) {
+    public VendasClientesZht(VendasClientesZhtId id, ClienteIar clienteIar, VendasZht vendasZht, int quantidadeZht) {
        this.id = id;
        this.clienteIar = clienteIar;
        this.vendasZht = vendasZht;
@@ -73,11 +73,11 @@ public class VendasClientesZht  implements java.io.Serializable {
 
     
     @Column(name="quantidade_zht", nullable=false)
-    public byte getQuantidadeZht() {
+    public int getQuantidadeZht() {
         return this.quantidadeZht;
     }
     
-    public void setQuantidadeZht(byte quantidadeZht) {
+    public void setQuantidadeZht(int quantidadeZht) {
         this.quantidadeZht = quantidadeZht;
     }
 

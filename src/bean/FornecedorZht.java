@@ -23,7 +23,7 @@ import javax.persistence.Table;
 public class FornecedorZht  implements java.io.Serializable {
 
 
-     private Byte idfornecedorZht;
+     private int idfornecedorZht;
      private String nomeZht;
      private String cnpjZht;
      private String emailZht;
@@ -82,11 +82,11 @@ public class FornecedorZht  implements java.io.Serializable {
 
     
     @Column(name="idfornecedor_zht", unique=true, nullable=false)
-    public Byte getIdfornecedorZht() {
+    public int getIdfornecedorZht() {
         return this.idfornecedorZht;
     }
     
-    public void setIdfornecedorZht(Byte idfornecedorZht) {
+    public void setIdfornecedorZht(int idfornecedorZht) {
         this.idfornecedorZht = idfornecedorZht;
     }
 

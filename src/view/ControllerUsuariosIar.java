@@ -1,6 +1,6 @@
 package view;
 
-import bean.ClienteIar;
+import bean.UsuariosIar;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -8,7 +8,7 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author u08439411111
  */
-public class ControllerClienteIar extends AbstractTableModel {
+public class ControllerUsuariosIar extends AbstractTableModel {
 
     private List lista;
 
@@ -16,8 +16,8 @@ public class ControllerClienteIar extends AbstractTableModel {
         this.lista = lista;
     }
     
-    public ClienteIar getBean(int rowIndex){
-    return (ClienteIar) lista.get(rowIndex);
+    public UsuariosIar getBean(int rowIndex){
+    return (UsuariosIar) lista.get(rowIndex);
             }
 
     @Override
@@ -32,18 +32,18 @@ public class ControllerClienteIar extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        ClienteIar cliente = (ClienteIar) lista.get(rowIndex);
+        UsuariosIar usuarios = (UsuariosIar) lista.get(rowIndex);
         if (columnIndex == 0) {
-            return cliente.getIdClienteIar();
+            return usuarios.getIdUsuariosIar();
         }
         if (columnIndex == 1) {
-            return cliente.getNomeClienteIar();
+            return usuarios.getNomeUsuarioIar();
         }
         if (columnIndex == 2) {
-            return cliente.getCpfClienteIar();
+            return usuarios.getCpfIar();
         }
         if (columnIndex == 3) {
-           return cliente.getRgClienteIar();
+           return usuarios.getApelidoIar();
        } 
         return "Sem dados"; // Retorno padrão caso o índice da coluna seja inválido
     }
@@ -60,7 +60,7 @@ public class ControllerClienteIar extends AbstractTableModel {
             return "CPF";
         }
         if (columnIndex == 3) {
-            return "RG";
+            return "Apelido";
         }
         return "";
     }

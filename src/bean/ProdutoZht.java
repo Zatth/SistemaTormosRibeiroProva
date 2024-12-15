@@ -29,7 +29,7 @@ public class ProdutoZht  implements java.io.Serializable {
      private FornecedorZht fornecedorZht;
      private String nomeProdutoZht;
      private double precoProdutoZht;
-     private byte qtdEstoqueProdutoZht;
+     private int qtdEstoqueProdutoZht;
      private String fotoZht;
      private String categoriaProdutoZht;
      private String descricaoProdutoZht;
@@ -39,7 +39,7 @@ public class ProdutoZht  implements java.io.Serializable {
     }
 
 	
-    public ProdutoZht(FornecedorZht fornecedorZht, String nomeProdutoZht, double precoProdutoZht, byte qtdEstoqueProdutoZht, String fotoZht, String categoriaProdutoZht, String descricaoProdutoZht) {
+    public ProdutoZht(FornecedorZht fornecedorZht, String nomeProdutoZht, double precoProdutoZht, int qtdEstoqueProdutoZht, String fotoZht, String categoriaProdutoZht, String descricaoProdutoZht) {
         this.fornecedorZht = fornecedorZht;
         this.nomeProdutoZht = nomeProdutoZht;
         this.precoProdutoZht = precoProdutoZht;
@@ -48,7 +48,7 @@ public class ProdutoZht  implements java.io.Serializable {
         this.categoriaProdutoZht = categoriaProdutoZht;
         this.descricaoProdutoZht = descricaoProdutoZht;
     }
-    public ProdutoZht(FornecedorZht fornecedorZht, String nomeProdutoZht, double precoProdutoZht, byte qtdEstoqueProdutoZht, String fotoZht, String categoriaProdutoZht, String descricaoProdutoZht, Set compraProdutoIars) {
+    public ProdutoZht(FornecedorZht fornecedorZht, String nomeProdutoZht, double precoProdutoZht, int qtdEstoqueProdutoZht, String fotoZht, String categoriaProdutoZht, String descricaoProdutoZht, Set compraProdutoIars) {
        this.fornecedorZht = fornecedorZht;
        this.nomeProdutoZht = nomeProdutoZht;
        this.precoProdutoZht = precoProdutoZht;
@@ -103,11 +103,11 @@ public class ProdutoZht  implements java.io.Serializable {
 
     
     @Column(name="qtd_estoque_produto_zht", nullable=false)
-    public byte getQtdEstoqueProdutoZht() {
+    public int getQtdEstoqueProdutoZht() {
         return this.qtdEstoqueProdutoZht;
     }
     
-    public void setQtdEstoqueProdutoZht(byte qtdEstoqueProdutoZht) {
+    public void setQtdEstoqueProdutoZht(int qtdEstoqueProdutoZht) {
         this.qtdEstoqueProdutoZht = qtdEstoqueProdutoZht;
     }
 

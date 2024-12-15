@@ -4,6 +4,7 @@
  */
 package view;
 
+import bean.ProdutoZht;
 import javax.swing.JOptionPane;
 import tools.Util;
 
@@ -25,26 +26,32 @@ public class JDlgProdutoZht extends javax.swing.JDialog {
                 jBtnConfirmar, jBtnCancelar);
       Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir,jBtnPesquisar);
     }
+    public ProdutoZht viewBean() {
+    ProdutoZht produto = new ProdutoZht();
+    
+    produto.setIdProdutoZht((byte) Util.strToInt(jTxtId.getText())); // Converte para Byte
+    produto.setNomeProdutoZht(jTxtNome.getText());
+    produto.setPrecoProdutoZht(Util.strToDouble(jTxtPreco.getText())); // Converte para Double
+    produto.setQtdEstoqueProdutoZht(Util.strToInt(jTxtQuantidade.getText())); // Converte para int
+    produto.setFotoZht(jTxtFoto.getText());
+    produto.setCategoriaProdutoZht(jTxtCategoria.getText());
+    produto.setDescricaoProdutoZht(jTxtDescricao.getText());
+    
+    return produto;
+}
 
-//    public void desabilitar() {
-//               // TODO add your handling code here:
-//        jTxtNome.setEnabled(false);
-//        jTxtId.setEnabled(false);
-//        jTxtQuantidade.setEnabled(false);
-//        jTxtFoto.setEnabled(false);
-//        jTxtCategoria.setEnabled(false);
-//        jTxtPreco.setEnabled(false);
-//        jTxtDescricao.setEnabled(false);
-//        
-//       jBtnAlterar.setEnabled(true);
-//       jBtnPesquisar.setEnabled(true);
-//       jBtnExcluir.setEnabled(true);
-//        jBtnCancelar.setEnabled(false);
-//        jBtnConfirmar.setEnabled(false);
-//        jBtnIncluir.setEnabled(true);
-//        
-//
-//    }
+public void beanView(ProdutoZht produto) {
+    jTxtId.setText(Util.intToStr(produto.getIdProdutoZht())); // Converte Byte para String
+    jTxtNome.setText(produto.getNomeProdutoZht());
+    jTxtPreco.setText(Util.doubleToStr(produto.getPrecoProdutoZht())); // Converte Double para String
+    jTxtQuantidade.setText(Util.intToStr(produto.getQtdEstoqueProdutoZht())); // Converte int para String
+    jTxtFoto.setText(produto.getFotoZht());
+    jTxtCategoria.setText(produto.getCategoriaProdutoZht());
+    jTxtDescricao.setText(produto.getDescricaoProdutoZht());
+}
+
+
+
     public void limpar(){
     jTxtNome.setText("");
         jTxtId.setText("");

@@ -4,6 +4,7 @@
  */
 package view;
 
+import bean.ClienteIar;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
@@ -45,10 +46,51 @@ public class JDlgClienteIar extends javax.swing.JDialog {
         jFtmtRg.setFormatterFactory(new DefaultFormatterFactory(mascaraRg));
         jFtmtTelefone.setFormatterFactory(new DefaultFormatterFactory(mascaraTelefone));
         
+   
+        
          Util.habilitar(false,jCboEstadoCivil,jTxtDataNascimento,jFtmtCpf,jFtmtCelular,jFtmtCpf,jFtmtRg,jFtmtTelefone ,jTxtNome, jTxtRua,jTxtPais,jTxtNumero,jTxtEstado,jTxtEmail,jTxtComplemento,jTxtCliente,jTxtBairro ,jBtnCancelar, jBtnConfirmar);
         Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnPesquisar, jBtnIncluir); 
     }
-
+      public ClienteIar viewBean() {
+        ClienteIar cliente = new ClienteIar();
+        
+        cliente.setIdClienteIar(Util.strToInt(jTxtCliente.getText()));
+        cliente.setNomeClienteIar(jTxtNome.getText() );
+        cliente.setEmailClienteIar(jTxtEmail.getText() );
+        cliente.setCpfClienteIar(jFtmtCpf.getText() );
+        cliente.setRgClienteIar( jFtmtRg.getText() );
+        cliente.setDataNascClienteIar(Util.strToDate(jTxtDataNascimento.getText()));
+        cliente.setEmailClienteIar(jTxtEmail.getText());
+        cliente.setEstadoCivilClienteIar(jCboEstadoCivil.getText() ); //COMO COISA CBO
+        cliente.setEstadoClienteIar(jTxtEstado.getText() );
+        cliente.setRuaClienteIar(jTxtRua.getText() );
+        cliente.setNumeroCasaClienteIar( jTxtNumero.getText() ); // esse aqio map emtemdi o erro
+        cliente.setBairroClienteIar( jTxtBairro.getText() );
+        cliente.setComplementoClienteIar(jTxtComplemento.getText() );
+        cliente.setPaisClienteIar(jTxtPais.getText() );
+        cliente.setTelefoneClienteIar(jFtmtTelefone.getText() );
+        cliente.setCelularClienteIar(jFtmtCelular.getText() );
+        
+        return cliente;
+    };
+       public void beanView(ClienteIar cliente) {
+        jTxtCliente.setText(Util.intToStr(cliente.getIdClienteIar()));
+        jTxtNome.setText(cliente.getNomeClienteIar());
+        jFtmtCpf.setText(cliente.getEmailClienteIar());
+        jFtmtRg.setText(cliente.getCpfClienteIar());
+        jFtmtRg.setText(cliente.getRgClienteIar());
+        jTxtDataNascimento.setText(cliente.getDataNascClienteIar());
+        jTxtEmail.setText(cliente.getEmailClienteIar());
+        jCboEstadoCivil.setText(cliente.getEstadoCivilClienteIar()); // CBO DE NOVO
+        jTxtEstado.setText(cliente.getEstadoClienteIar());
+        jTxtRua.setText(cliente.getRuaClienteIar());
+        jTxtNumero.setText(cliente.getNumeroCasaClienteIar());
+        jTxtBairro.setText( cliente.getBairroClienteIar());
+        jTxtComplemento.setText(cliente.getPaisClienteIar());
+        jFtmtTelefone.setText(cliente.getTelefoneClienteIar());
+    }
+    
+    
     /*ft
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
