@@ -390,7 +390,7 @@ public void beanView(FornecedorZht fornecedor) {
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
-        JDlgPesquisarFornecedor JDlgPesquisarFornecedor = new JDlgPesquisarFornecedor(null, true);
+        JDlgFornecedorZhtPesquisar JDlgPesquisarFornecedor = new JDlgFornecedorZhtPesquisar(null, true);
         JDlgPesquisarFornecedor.setVisible(true);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 

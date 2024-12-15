@@ -4,21 +4,39 @@
  */
 package view;
 
+import bean.FornecedorZht;
+import dao.FornecedorZhtDAO;
+import dao.FuncionarioIarDAO;
+import java.util.List;
+
 /**
  *
  * @author Zah
  */
-public class JDlgPesquisarProdutos extends javax.swing.JDialog {
+public class JDlgFornecedorZhtPesquisar extends javax.swing.JDialog {
 
     /**
-     * Creates new form JDlgPesquisarProdutos
+     * Creates new form JDlgPesquisar
      */
-    public JDlgPesquisarProdutos(java.awt.Frame parent, boolean modal) {
+     private JDlgFornecedorZht jDlgFornecedorZht ;
+    private ControllerFornecedorZht controllerFornecedorZht ;
+    
+    public JDlgFornecedorZhtPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Pesquisa de Produtos");
+        setTitle("Pesquisa de Fornecedores");
         setLocationRelativeTo(null);
+        controllerFornecedorZht = new ControllerFornecedorZht();
+        FornecedorZhtDAO fornecedorZhtDAO = new FornecedorZhtDAO();
+        List lista = fornecedorZhtDAO.listAll();
+        
+        controllerFornecedorZht.setLista(lista); // QUE ERRO É ESSE PLMDDS
+        jTable1.setModel(controllerFornecedorZht);
     }
+        public void setTelaAnterior(JDlgFornecedorZht jDlgFornecedorZht) {
+        this.jDlgFornecedorZht = jDlgFornecedorZht;
+        }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,11 +47,24 @@ public class JDlgPesquisarProdutos extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jBtnOkay = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableProdutos = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
+        jBtnOkay = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nome", "CNPJ", "Email"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         jBtnOkay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/confirmar.png"))); // NOI18N
         jBtnOkay.setText("OK");
@@ -43,38 +74,27 @@ public class JDlgPesquisarProdutos extends javax.swing.JDialog {
             }
         });
 
-        jTableProdutos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "ID", "Nome", "Preço", "Quantidade"
-            }
-        ));
-        jScrollPane1.setViewportView(jTableProdutos);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jBtnOkay)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(51, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBtnOkay)
+                .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jBtnOkay)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -82,7 +102,10 @@ public class JDlgPesquisarProdutos extends javax.swing.JDialog {
 
     private void jBtnOkayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkayActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+      int rowSel = jTable1.getSelectedRow();
+        FornecedorZht fornecedor = controllerFornecedorZht.getBean(rowSel);
+        jDlgFornecedorZht.beanView(fornecedor);
+        setVisible(false);
     }//GEN-LAST:event_jBtnOkayActionPerformed
 
     /**
@@ -102,20 +125,21 @@ public class JDlgPesquisarProdutos extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDlgPesquisarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgPesquisarFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDlgPesquisarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgPesquisarFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDlgPesquisarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgPesquisarFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDlgPesquisarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgPesquisarFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDlgPesquisarProdutos dialog = new JDlgPesquisarProdutos(new javax.swing.JFrame(), true);
+                JDlgFornecedorZhtPesquisar dialog = new JDlgFornecedorZhtPesquisar(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -130,6 +154,6 @@ public class JDlgPesquisarProdutos extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnOkay;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableProdutos;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

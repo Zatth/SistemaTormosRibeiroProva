@@ -4,6 +4,11 @@
  */
 package view;
 
+import bean.FuncionarioIar;
+import dao.ClienteIarDAO;
+import dao.FuncionarioIarDAO;
+import java.util.List;
+
 /**
  *
  * @author User
@@ -13,12 +18,25 @@ public class JDlgFuncionariosIarPesquisar extends javax.swing.JDialog {
     /**
      * Creates new form JDlgFuncionariosIarPesquisar
      */
+      private JDlgFuncionarioIar jDlgFuncionarioIar;
+    private ControllerFuncionarioIar controllerFuncionarioIar;
+    
     public JDlgFuncionariosIarPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setTitle("Pesquisa de Funcionários");
         setLocationRelativeTo(null);
+        controllerFuncionarioIar = new ControllerFuncionarioIar();
+        FuncionarioIarDAO funcionarioIarDAO = new FuncionarioIarDAO();
+        List lista = funcionarioIarDAO.listAll();
+        
+        controllerFuncionarioIar.setLista(lista); // QUE ERRO É ESSE PLMDDS
+        jTable1.setModel(controllerFuncionarioIar);
     }
+        public void setTelaAnterior(JDlgFuncionarioIar jDlgFuncionarioIar) {
+        this.jDlgFuncionarioIar = jDlgFuncionarioIar;
+        }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,7 +98,10 @@ public class JDlgFuncionariosIarPesquisar extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        int rowSel = jTable1.getSelectedRow();
+        FuncionarioIar funcionario = controllerFuncionarioIar.getBean(rowSel);
+        jDlgFuncionarioIar.beanView(funcionario);
+        setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

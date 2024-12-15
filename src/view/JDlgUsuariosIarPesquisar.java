@@ -4,6 +4,11 @@
  */
 package view;
 
+import bean.UsuariosIar;
+import dao.ProdutoZhtDAO;
+import dao.UsuariosIarDAO;
+import java.util.List;
+
 /**
  *
  * @author User
@@ -13,11 +18,23 @@ public class JDlgUsuariosIarPesquisar extends javax.swing.JDialog {
     /**
      * Creates new form JDlgUsuariosIarPesquisar
      */
+     private JDlgUsuariosIar jDlgUsuariosIar ;
+    private ControllerUsuariosIar controllerUsuariosIar ;
     public JDlgUsuariosIarPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Pesquisa de Usuários");
+         controllerUsuariosIar = new ControllerUsuariosIar();
+        UsuariosIarDAO usuariosIarDAO = new UsuariosIarDAO();
+        List lista = usuariosIarDAO.listAll();
+        
+        controllerUsuariosIar.setLista(lista); // QUE ERRO É ESSE PLMDDS
+        jTable1.setModel(controllerUsuariosIar);
+    }
+        public void setTelaAnterior(JDlgUsuariosIar jDlgUsuariosIar) {
+        this.jDlgUsuariosIar = jDlgUsuariosIar;
+        
     }
 
     /**
@@ -84,7 +101,10 @@ public class JDlgUsuariosIarPesquisar extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        int rowSel = jTable1.getSelectedRow();
+        UsuariosIar usuario = controllerUsuariosIar.getBean(rowSel);
+        jDlgUsuariosIar.beanView(usuario);
+        setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

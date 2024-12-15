@@ -287,7 +287,7 @@ public void beanView(ProdutoZht produto) {
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
-         JDlgPesquisarProdutos JDlgPesquisarProdutos = new JDlgPesquisarProdutos(null, true);
+         JDlgProdutosZhtPesquisar JDlgPesquisarProdutos = new JDlgProdutosZhtPesquisar(null, true);
         JDlgPesquisarProdutos.setVisible(true);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
