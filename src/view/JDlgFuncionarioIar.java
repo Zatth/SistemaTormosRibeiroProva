@@ -5,6 +5,7 @@
 package view;
 
 import bean.FuncionarioIar;
+import dao.FuncionarioIarDAO;
 import javax.swing.JOptionPane;
 import tools.Util;
 
@@ -17,6 +18,7 @@ public class JDlgFuncionarioIar extends javax.swing.JDialog {
     /**
      * Creates new form JDlgFuncionarioIar
      */
+     boolean incluir;
     public JDlgFuncionarioIar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -286,6 +288,14 @@ public void beanView(FuncionarioIar funcionario) {
         Util.habilitar(false, jTxtNome,jCboFuncao, jTxtRua, jTxtNumero,jTxtId,jTxtEstado,jTxtComplemento,jTxtBairro,jBtnCancelar, jBtnConfirmar);
         Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnPesquisar, jBtnIncluir);
         Util.limpar(jTxtNome,jCboFuncao, jTxtRua, jTxtNumero,jTxtId,jTxtEstado,jTxtComplemento,jTxtBairro);
+        FuncionarioIar funcionario = viewBean();
+        FuncionarioIarDAO funcionarioIarDAO = new FuncionarioIarDAO();
+       
+         if (incluir == true) {
+            funcionarioIarDAO.insert(funcionario);
+        } else {
+            funcionarioIarDAO.update(funcionario);
+        }
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed

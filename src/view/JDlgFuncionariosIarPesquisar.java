@@ -30,7 +30,7 @@ public class JDlgFuncionariosIarPesquisar extends javax.swing.JDialog {
         FuncionarioIarDAO funcionarioIarDAO = new FuncionarioIarDAO();
         List lista = funcionarioIarDAO.listAll();
         
-        controllerFuncionarioIar.setLista(lista); // QUE ERRO É ESSE PLMDDS
+        controllerFuncionarioIar.setList(lista); // QUE ERRO É ESSE PLMDDS
         jTable1.setModel(controllerFuncionarioIar);
     }
         public void setTelaAnterior(JDlgFuncionarioIar jDlgFuncionarioIar) {

@@ -25,7 +25,6 @@ import javax.persistence.TemporalType;
 )
 public class CompraIar  implements java.io.Serializable {
 
-
      private int idCompraIar;
      private FuncionarioIar funcionarioIar;
      private Date dataIar;
@@ -34,7 +33,6 @@ public class CompraIar  implements java.io.Serializable {
 
     public CompraIar() {
     }
-
 	
     public CompraIar(FuncionarioIar funcionarioIar, Date dataIar, double valorIar, String pagamentoCompraIar) {
         this.funcionarioIar = funcionarioIar;
@@ -47,7 +45,7 @@ public class CompraIar  implements java.io.Serializable {
        this.dataIar = dataIar;
        this.valorIar = valorIar;
        this.pagamentoCompraIar = pagamentoCompraIar;
-  
+ 
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -102,12 +100,12 @@ public class CompraIar  implements java.io.Serializable {
         this.pagamentoCompraIar = pagamentoCompraIar;
     }
 
-    public void setClienteIar(ClienteIar clienteIar) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Object getClienteIar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    public void setClienteIar(ClienteIar clienteIar) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//}
+//
+//    public Object getClienteIar() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
 }

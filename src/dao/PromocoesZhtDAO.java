@@ -40,7 +40,8 @@ public class PromocoesZhtDAO extends DAO_Abstract {
         session.delete(object);
         session.beginTransaction().commit();
     }
-
+    
+    
     @Override
     public Object list(int id) { //aqui o parâmetro
        session.beginTransaction(); // comecei uma transaçao

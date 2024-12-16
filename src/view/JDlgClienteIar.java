@@ -5,6 +5,7 @@
 package view;
 
 import bean.ClienteIar;
+import dao.ClienteIarDAO;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
@@ -28,6 +29,7 @@ public class JDlgClienteIar extends javax.swing.JDialog {
     /**
      * Creates new form JDlgClienteIar
      */
+      boolean incluir;
     public JDlgClienteIar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -61,7 +63,9 @@ public class JDlgClienteIar extends javax.swing.JDialog {
     cliente.setCpfClienteIar(jFtmtCpf.getText());
     cliente.setRgClienteIar(jFtmtRg.getText());
     cliente.setDataNascClienteIar(Util.strToDate(jTxtDataNascimento.getText())); // Converte o texto para Date
+    //System.out.println(jCboEstadoCivil.getSelectedItem());
     cliente.setEstadoCivilClienteIar(jCboEstadoCivil.getSelectedItem().toString());
+    //cliente.setEstadoCivilClienteIar("1");
     cliente.setEmailClienteIar(jTxtEmail.getText());
     cliente.setRuaClienteIar(jTxtRua.getText());
     cliente.setNumeroCasaClienteIar(Util.strToInt(jTxtNumero.getText())); // Converte para int
@@ -75,23 +79,23 @@ public class JDlgClienteIar extends javax.swing.JDialog {
     return cliente;
 }
 
-       public void beanView(ClienteIar cliente) {
-    jTxtCliente.setText(Util.intToStr(cliente.getIdClienteIar())); // Converte o int para String
-    jTxtNome.setText(cliente.getNomeClienteIar());
-    jFtmtCpf.setText(cliente.getCpfClienteIar());
-    jFtmtRg.setText(cliente.getRgClienteIar());
-    jTxtDataNascimento.setText(Util.dateToStr(cliente.getDataNascClienteIar())); // Converte Date para String
-    jCboEstadoCivil.setSelectedItem(cliente.getEstadoCivilClienteIar());
-    jTxtEmail.setText(cliente.getEmailClienteIar());
-    jTxtRua.setText(cliente.getRuaClienteIar());
-    jTxtNumero.setText(Util.intToStr(cliente.getNumeroCasaClienteIar())); // Converte para String
-    jTxtBairro.setText(cliente.getBairroClienteIar());
-    jTxtComplemento.setText(cliente.getComplementoClienteIar());
-    jTxtEstado.setText(cliente.getEstadoClienteIar());
-    jTxtPais.setText(cliente.getPaisClienteIar());
-    jFtmtTelefone.setText(cliente.getTelefoneClienteIar());
-    jFtmtCelular.setText(cliente.getCelularClienteIar());
-}
+    public void beanView(ClienteIar cliente) {
+        jTxtCliente.setText(Util.intToStr(cliente.getIdClienteIar())); // Converte o int para String
+        jTxtNome.setText(cliente.getNomeClienteIar());
+        jFtmtCpf.setText(cliente.getCpfClienteIar());
+        jFtmtRg.setText(cliente.getRgClienteIar());
+        jTxtDataNascimento.setText(Util.dateToStr(cliente.getDataNascClienteIar())); // Converte Date para String
+        jCboEstadoCivil.setSelectedItem(cliente.getEstadoCivilClienteIar());
+        jTxtEmail.setText(cliente.getEmailClienteIar());
+        jTxtRua.setText(cliente.getRuaClienteIar());
+        jTxtNumero.setText(Util.intToStr(cliente.getNumeroCasaClienteIar())); // Converte para String
+        jTxtBairro.setText(cliente.getBairroClienteIar());
+        jTxtComplemento.setText(cliente.getComplementoClienteIar());
+        jTxtEstado.setText(cliente.getEstadoClienteIar());
+        jTxtPais.setText(cliente.getPaisClienteIar());
+        jFtmtTelefone.setText(cliente.getTelefoneClienteIar());
+        jFtmtCelular.setText(cliente.getCelularClienteIar());
+    }
     
     
     /*ft
@@ -209,6 +213,11 @@ public class JDlgClienteIar extends javax.swing.JDialog {
         jLabel10.setText("Rua");
 
         jCboEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solteiro", "Casado", "Viúvo" }));
+        jCboEstadoCivil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCboEstadoCivilActionPerformed(evt);
+            }
+        });
 
         jLabel11.setText("Bairro");
 
@@ -447,6 +456,14 @@ public class JDlgClienteIar extends javax.swing.JDialog {
         Util.habilitar(false,jCboEstadoCivil,jTxtDataNascimento,jFtmtCpf,jFtmtCelular,jFtmtCpf,jFtmtRg,jFtmtTelefone, jTxtNome, jTxtRua,jTxtPais,jTxtNumero,jTxtEstado,jTxtEmail,jTxtComplemento,jTxtCliente,jTxtBairro ,jBtnCancelar, jBtnConfirmar);
         Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnPesquisar, jBtnIncluir); 
               Util.limpar(jFtmtCpf,jTxtDataNascimento, jTxtNome, jTxtRua,jTxtPais,jTxtNumero,jTxtEstado,jTxtEmail,jTxtComplemento,jTxtCliente,jTxtBairro,jCboEstadoCivil);
+              ClienteIar cliente = viewBean();
+        ClienteIarDAO clienteIarDAO = new ClienteIarDAO();
+      
+        if (incluir == true) {
+            clienteIarDAO.insert(cliente);
+        } else {
+            clienteIarDAO.update(cliente);
+        }
 
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
@@ -492,6 +509,10 @@ JOptionPane.showMessageDialog(null, "Exclusão Realizada com sucesso");      }
     private void jTxtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtEmailActionPerformed
+
+    private void jCboEstadoCivilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboEstadoCivilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCboEstadoCivilActionPerformed
 
     /**
      * @param args the command line arguments

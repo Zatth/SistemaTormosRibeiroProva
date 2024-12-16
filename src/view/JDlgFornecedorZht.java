@@ -5,6 +5,7 @@
 package view;
 
 import bean.FornecedorZht;
+import dao.FornecedorZhtDAO;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
@@ -19,7 +20,10 @@ public class JDlgFornecedorZht extends javax.swing.JDialog {
 
     /**
      * Creates new form JDlgFornecedores
+     * 
+     
      */ private MaskFormatter mascaraCnpj;
+      boolean incluir;
     private MaskFormatter mascaraCep;
     public JDlgFornecedorZht(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -263,7 +267,7 @@ public void beanView(FornecedorZht fornecedor) {
                                                     .addGroup(layout.createSequentialGroup()
                                                         .addGap(133, 133, 133)
                                                         .addComponent(jLabel15)))))
-                                        .addGap(0, 2, Short.MAX_VALUE))))
+                                        .addGap(0, 11, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -390,8 +394,9 @@ public void beanView(FornecedorZht fornecedor) {
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
-        JDlgFornecedorZhtPesquisar JDlgPesquisarFornecedor = new JDlgFornecedorZhtPesquisar(null, true);
-        JDlgPesquisarFornecedor.setVisible(true);
+        JDlgFornecedorZhtPesquisar JDlgFornecedorZhtPesquisar = new JDlgFornecedorZhtPesquisar(null, true);
+        JDlgFornecedorZhtPesquisar.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
@@ -437,8 +442,14 @@ public void beanView(FornecedorZht fornecedor) {
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir,jBtnPesquisar);
          Util.limpar(jTxtId, jFtmtCnpj, jTxtNome,jTxtEmail, jFtmtCep, jTxtEndereco, jTxtCidade, jTxtEstado, jTxtNomeFuncionario, jTxtBairro, jTxtRua,
               jTxtComplemento, jTxtContato, jTxtPais, jTxtDdd);
-       
-      
+          FornecedorZht fornecedor = viewBean();
+          FornecedorZhtDAO fornecedorZhtDAO = new FornecedorZhtDAO();
+        
+         if (incluir == true) {
+            fornecedorZhtDAO.insert(fornecedor);
+        } else {
+            fornecedorZhtDAO.update(fornecedor);
+        }
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed

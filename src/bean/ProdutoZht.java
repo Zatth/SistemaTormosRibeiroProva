@@ -2,7 +2,7 @@ package bean;
 // Generated 13/12/2024 19:27:56 by Hibernate Tools 4.3.1
 
 
-import java.util.HashSet;
+
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +25,7 @@ import javax.persistence.Table;
 public class ProdutoZht  implements java.io.Serializable {
 
 
-     private Byte idProdutoZht;
+     private int idProdutoZht;
      private FornecedorZht fornecedorZht;
      private String nomeProdutoZht;
      private double precoProdutoZht;
@@ -63,11 +63,11 @@ public class ProdutoZht  implements java.io.Serializable {
 
     
     @Column(name="id_produto_zht", unique=true, nullable=false)
-    public Byte getIdProdutoZht() {
+    public int getIdProdutoZht() {
         return this.idProdutoZht;
     }
     
-    public void setIdProdutoZht(Byte idProdutoZht) {
+    public void setIdProdutoZht(int idProdutoZht) {
         this.idProdutoZht = idProdutoZht;
     }
 

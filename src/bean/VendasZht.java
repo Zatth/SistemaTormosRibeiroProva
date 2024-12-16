@@ -4,7 +4,6 @@ package bean;
 
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,7 +33,6 @@ public class VendasZht  implements java.io.Serializable {
      private double valorVendaZht;
      private Date dataVendaZht;
      private String pagamentoVendaZht;
-     private Set vendasClientesZhts = new HashSet(0);
 
     public VendasZht() {
     }
@@ -48,16 +46,6 @@ public class VendasZht  implements java.io.Serializable {
         this.valorVendaZht = valorVendaZht;
         this.dataVendaZht = dataVendaZht;
         this.pagamentoVendaZht = pagamentoVendaZht;
-    }
-    public VendasZht(int idVendasZht, ClienteIar clienteIar, FuncionarioIar funcionarioIar, int quantidadeVendaZht, double valorVendaZht, Date dataVendaZht, String pagamentoVendaZht, Set vendasClientesZhts) {
-       this.idVendasZht = idVendasZht;
-       this.clienteIar = clienteIar;
-       this.funcionarioIar = funcionarioIar;
-       this.quantidadeVendaZht = quantidadeVendaZht;
-       this.valorVendaZht = valorVendaZht;
-       this.dataVendaZht = dataVendaZht;
-       this.pagamentoVendaZht = pagamentoVendaZht;
-       this.vendasClientesZhts = vendasClientesZhts;
     }
    
      @Id 
@@ -131,16 +119,6 @@ public class VendasZht  implements java.io.Serializable {
     public void setPagamentoVendaZht(String pagamentoVendaZht) {
         this.pagamentoVendaZht = pagamentoVendaZht;
     }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="vendasZht")
-    public Set getVendasClientesZhts() {
-        return this.vendasClientesZhts;
-    }
-    
-    public void setVendasClientesZhts(Set vendasClientesZhts) {
-        this.vendasClientesZhts = vendasClientesZhts;
-    }
-
 
 
 

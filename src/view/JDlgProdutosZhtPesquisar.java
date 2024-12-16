@@ -30,7 +30,7 @@ public class JDlgProdutosZhtPesquisar extends javax.swing.JDialog {
         ProdutoZhtDAO produtoZhtDAO = new ProdutoZhtDAO();
         List lista = produtoZhtDAO.listAll();
         
-        controllerProdutoZht.setLista(lista); // QUE ERRO É ESSE PLMDDS
+        controllerProdutoZht.setList(lista); // QUE ERRO É ESSE PLMDDS
         jTable1.setModel(controllerProdutoZht);
     }
         public void setTelaAnterior(JDlgProdutoZht jDlgProdutoZht) {

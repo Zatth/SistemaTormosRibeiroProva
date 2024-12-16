@@ -5,6 +5,7 @@
 package view;
 
 import bean.UsuariosIar;
+import dao.UsuariosIarDAO;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
 import tools.Util;
@@ -20,6 +21,7 @@ public class JDlgUsuariosIar extends javax.swing.JDialog {
     /**
      * Creates new form JDlgUsuariosIar
      */
+     boolean incluir;
     private MaskFormatter mascaraCPF;
     public JDlgUsuariosIar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -316,6 +318,17 @@ public void beanView(UsuariosIar usuario) {
         Util.habilitar(false,jFtmtCpf, jTxtDataNasc, jTxtNome, jTxtCodigo, jTxtApelido, jPwfSenha, jCboNivel, jChbAtivo, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnPesquisar, jBtnIncluir);
         Util.limpar(jFtmtCpf, jTxtDataNasc, jTxtNome, jTxtCodigo, jTxtApelido, jPwfSenha, jCboNivel, jChbAtivo);
+        
+         UsuariosIar usuario = viewBean();
+          UsuariosIarDAO usuariosIarDAO = new UsuariosIarDAO();
+       
+        
+         if (incluir == true) {
+            usuariosIarDAO.insert(usuario);
+        } else {
+            usuariosIarDAO.update(usuario);
+        }
+        
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed

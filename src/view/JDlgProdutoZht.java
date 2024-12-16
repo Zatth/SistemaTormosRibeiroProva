@@ -5,6 +5,7 @@
 package view;
 
 import bean.ProdutoZht;
+import dao.ProdutoZhtDAO;
 import javax.swing.JOptionPane;
 import tools.Util;
 
@@ -17,6 +18,7 @@ public class JDlgProdutoZht extends javax.swing.JDialog {
     /**
      * Creates new form JDldProdutos
      */
+     boolean incluir;
     public JDlgProdutoZht(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -344,6 +346,15 @@ Util.habilitar(false, jTxtQuantidade, jTxtFoto, jTxtNome,jTxtCategoria, jTxtDesc
                 jBtnConfirmar, jBtnCancelar);
       Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir,jBtnPesquisar);
       Util.limpar(jTxtQuantidade, jTxtFoto, jTxtNome,jTxtCategoria, jTxtDescricao, jTxtId, jTxtPreco);
+       ProdutoZht produto = viewBean();
+          ProdutoZhtDAO produtoZhtDAO = new ProdutoZhtDAO();
+       
+        
+         if (incluir == true) {
+            produtoZhtDAO.insert(produto);
+        } else {
+            produtoZhtDAO.update(produto);
+        }
         
        // desabilitar();
               // TODO add your handling code here:

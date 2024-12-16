@@ -39,7 +39,7 @@ public class JDlgVendasZht extends javax.swing.JDialog {
         ClienteIarDAO clienteIarDAO = new ClienteIarDAO();
         List lista = clienteIarDAO.listAll();
         for (int i = 0; i < lista.size(); i++) {
-            jCboClientes.addItem((ClienteIar)lista.get(i)); // for para chamar o list dos clientes 
+         //   jCboClientes.addItem((ClienteIar)lista.get(i)); // for para chamar o list dos clientes 
             
         }
     }
@@ -49,8 +49,8 @@ public class JDlgVendasZht extends javax.swing.JDialog {
     vendas.setIdVendasZht(Util.strToInt(jTxtCodigo.getText()));
    // pedidos.setData(Util.strToDate(jFmtData.getText())); TIO MANDOU COMENTAR 
     vendas.setClienteIar((ClienteIar) jCboClientes.getSelectedItem());
-    vendas.setVendedor((FuncionarioIar) jCboVendedor.getSelectedItem());
-    vendas.setTotal(Util.strToDouble(jTxtTotal.getText()));
+    vendas.setFuncionarioIar((FuncionarioIar) jCboVendedor.getSelectedItem());
+    vendas.setValorVendaZht(Util.strToDouble(jTxtTotal.getText()));
     return vendas;
     
     }
@@ -79,7 +79,6 @@ public class JDlgVendasZht extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jTxtTotal = new javax.swing.JTextField();
         jFmtData = new javax.swing.JFormattedTextField();
-        jCboClientes = new javax.swing.JComboBox<Clientes>();
         jCboVendedor = new javax.swing.JComboBox<>();
         jBtnIncluir = new javax.swing.JButton();
         jBtnConfirmar = new javax.swing.JButton();
@@ -90,6 +89,7 @@ public class JDlgVendasZht extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jCboClientes = new javax.swing.JComboBox<>();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -126,6 +126,11 @@ public class JDlgVendasZht extends javax.swing.JDialog {
         jFmtData.setText("jFormattedTextField1");
 
         jCboVendedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCboVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCboVendedorActionPerformed(evt);
+            }
+        });
 
         jBtnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/incluir.png"))); // NOI18N
         jBtnIncluir.setText("Incluir");
@@ -196,6 +201,8 @@ public class JDlgVendasZht extends javax.swing.JDialog {
             }
         });
 
+        jCboClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -229,8 +236,8 @@ public class JDlgVendasZht extends javax.swing.JDialog {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
-                                    .addComponent(jCboClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jCboClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(50, 50, 50)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
                                     .addComponent(jCboVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -263,8 +270,8 @@ public class JDlgVendasZht extends javax.swing.JDialog {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jFmtData, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jCboClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jFmtData, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jCboClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jCboVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,33 +336,34 @@ public class JDlgVendasZht extends javax.swing.JDialog {
         VendasZht vendas = viewBean();
         VendasDAO vendasDAO = new VendasDAO();
         if (incluir == true) {
-        VendasDAO.insert(vendas);
+        vendasDAO.insert(vendas);
         } else {
-            VendasDAO.update(vendas);
+            vendasDAO.update(vendas);
         }
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         //int resp = JOptionPane.showConfirmDialog(null, "Confirma exclusão", "Deletar o registro", JOptionPane.YES_NO_OPTION);
-       // if (resp == JOptionPane.YES_OPTION){
-         //   UsuariosIar usuarios = new UsuariosIar();
-          //  int cod = Integer.valueOf(jTxtCodigo.getText());
-          //  usuarios.setIdusuarios(cod);
-           // usuarios.setNome(jTxtNome.getText());
-           // usuarios.setApelido(jTxtApelido.getText());
-           // usuarios.setCpf(jFtmtCpf.getText());
-           // usuarios.setDataNascimento(null);
-           // usuarios.setSenha(jPwfSenha.getText());
-            //usuarios.setNivel((int) jCboNivel.getSelectedIndex());
+        // if (resp == JOptionPane.YES_OPTION){
+        //   UsuariosIar usuarios = new UsuariosIar();
+        //  int cod = Integer.valueOf(jTxtCodigo.getText());
+        //  usuarios.setIdusuarios(cod);
+        // usuarios.setNome(jTxtNome.getText());
+        // usuarios.setApelido(jTxtApelido.getText());
+        // usuarios.setCpf(jFtmtCpf.getText());
+        // usuarios.setDataNascimento(null);
+        // usuarios.setSenha(jPwfSenha.getText());
+        //usuarios.setNivel((int) jCboNivel.getSelectedIndex());
 
-            //if (jChbAtivo.isSelected() == true){
-           //     usuarios.setAtivo("S");
-            //}else{ usuarios.setAtivo("N");}
+        //if (jChbAtivo.isSelected() == true){
+        //     usuarios.setAtivo("S");
+        //}else{ usuarios.setAtivo("N");}
 
-         //   UsuariosIarDao usuariosDao = new UsuariosIarDao();
-          //  usuariosDao.delete(usuarios);}
+        //   UsuariosIarDao usuariosDao = new UsuariosIarDao();
+        //  usuariosDao.delete(usuarios);}
         //limpar();
-          JOptionPane.showInputDialog(null, "Deseja excluir o produto?");
+        boolean perguntar = Util.perguntar( "Deseja excluir o produto?");
+     //   JOptionPane.showInputDialog(null, "Deseja excluir o produto?");
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
@@ -402,17 +410,27 @@ public class JDlgVendasZht extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here: incluir, tem q chamar a tela de pedidos produtos
+        //TODO add your handling code here: incluir, tem q chamar a tela de pedidos produtos
+        JDlgVendasProdutosZht jDlgVendasProdutos = new JDlgVendasProdutosZht(null, true);
+        jDlgVendasProdutos.setVisible(true);
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here: tem q chamar a tela de produtos
+         JDlgProdutoZht jDlgProduto = new JDlgProdutoZht(null, true);
+        jDlgProduto.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here: excluir 
         JOptionPane.showInputDialog(null, "Deseja excluir o produto?");
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jCboVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboVendedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCboVendedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -467,7 +485,7 @@ public class JDlgVendasZht extends javax.swing.JDialog {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<Clientes> jCboClientes;
+    private javax.swing.JComboBox<String> jCboClientes;
     private javax.swing.JComboBox<String> jCboVendedor;
     private javax.swing.JFormattedTextField jFmtData;
     private javax.swing.JLabel jLabel1;

@@ -5,7 +5,7 @@
  */
 package dao;
 
-import bean.ClienteIar;
+//import bean.ClienteIar;
 import java.util.ArrayList;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;

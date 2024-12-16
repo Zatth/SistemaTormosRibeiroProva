@@ -18,6 +18,7 @@ public class JDlgPromocoesZht extends javax.swing.JDialog {
     /**
      * Creates new form JDlgPromocoesZht
      */
+    
     public JDlgPromocoesZht(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

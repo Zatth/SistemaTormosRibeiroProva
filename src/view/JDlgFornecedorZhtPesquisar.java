@@ -30,7 +30,7 @@ public class JDlgFornecedorZhtPesquisar extends javax.swing.JDialog {
         FornecedorZhtDAO fornecedorZhtDAO = new FornecedorZhtDAO();
         List lista = fornecedorZhtDAO.listAll();
         
-        controllerFornecedorZht.setLista(lista); // QUE ERRO É ESSE PLMDDS
+        controllerFornecedorZht.setList(lista); // QUE ERRO É ESSE PLMDDS
         jTable1.setModel(controllerFornecedorZht);
     }
         public void setTelaAnterior(JDlgFornecedorZht jDlgFornecedorZht) {
@@ -125,13 +125,13 @@ public class JDlgFornecedorZhtPesquisar extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDlgPesquisarFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgFornecedorZhtPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDlgPesquisarFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgFornecedorZhtPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDlgPesquisarFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgFornecedorZhtPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDlgPesquisarFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgFornecedorZhtPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>

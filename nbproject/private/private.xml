@@ -4,25 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/SistemaTormosRibeiroProva/src/view/ControllerClienteIar.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/view/JDlgClienteIar.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/bean/CompraIar.java</file>
             <file>file:/D:/SistemaTormosRibeiroProva/src/bean/VendasZht.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/view/JFrmPincipal.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/bean/FuncionarioIar.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/bean/ProdutoVendasZhtId.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/bean/CompraFornecedorIar.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/bean/UsuariosIar.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/dao/ClienteIarDAO.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/bean/FornecedorZht.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/bean/ProdutoVendasZht.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/bean/PromocoesZht.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/bean/VendasClientesZhtId.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/bean/CompraProdutoIarId.java</file>
+            <file>file:/D:/SistemaTormosRibeiroProva/src/view/JDlgPesquisarPromocoes.java</file>
             <file>file:/D:/SistemaTormosRibeiroProva/src/bean/ProdutoZht.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/bean/ClienteIar.java</file>
             <file>file:/D:/SistemaTormosRibeiroProva/src/bean/VendasClientesZht.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/bean/CompraFornecedorIarId.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/bean/CompraProdutoIar.java</file>
+            <file>file:/D:/SistemaTormosRibeiroProva/src/bean/ClienteIar.java</file>
+            <file>file:/D:/SistemaTormosRibeiroProva/src/view/JDlgFornecedorZhtPesquisar.java</file>
+            <file>file:/D:/SistemaTormosRibeiroProva/src/view/JDlgPromocoesZht.java</file>
+            <file>file:/D:/SistemaTormosRibeiroProva/src/view/JDlgFornecedorZht.java</file>
+            <file>file:/D:/SistemaTormosRibeiroProva/src/dao/ClienteIarDAO.java</file>
         </group>
     </open-files>
 </project-private>

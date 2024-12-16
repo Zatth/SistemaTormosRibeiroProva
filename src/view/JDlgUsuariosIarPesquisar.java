@@ -29,7 +29,7 @@ public class JDlgUsuariosIarPesquisar extends javax.swing.JDialog {
         UsuariosIarDAO usuariosIarDAO = new UsuariosIarDAO();
         List lista = usuariosIarDAO.listAll();
         
-        controllerUsuariosIar.setLista(lista); // QUE ERRO É ESSE PLMDDS
+        controllerUsuariosIar.setList(lista); // QUE ERRO É ESSE PLMDDS
         jTable1.setModel(controllerUsuariosIar);
     }
         public void setTelaAnterior(JDlgUsuariosIar jDlgUsuariosIar) {

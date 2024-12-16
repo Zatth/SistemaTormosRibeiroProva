@@ -4,6 +4,10 @@
  */
 package view;
 
+import dao.FornecedorZhtDAO;
+import dao.PromocoesZhtDAO;
+import java.util.List;
+
 /**
  *
  * @author Zah
@@ -13,11 +17,23 @@ public class JDlgPesquisarPromocoes extends javax.swing.JDialog {
     /**
      * Creates new form JDlgPesquisarPromocoes
      */
+     private JDlgPromocoesZht jDlgPromocoesZht ;
+    private ControllerPromocoesZht controllerPromocoesZht ;
     public JDlgPesquisarPromocoes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setTitle("Pesquisa de Promoções");
         setLocationRelativeTo(null);
+        controllerPromocoesZht = new ControllerPromocoesZht();
+        PromocoesZhtDAO promocoesZhtDAO = new PromocoesZhtDAO();
+        List lista = promocoesZhtDAO.listAll();
+        
+        controllerPromocoesZht.setList(lista); // QUE ERRO É ESSE PLMDDS
+        jTable1.setModel(controllerPromocoesZht);
+    }
+        public void setTelaAnterior(JDlgPromocoesZht jDlgPromocoesZht) {
+        this.jDlgPromocoesZht = jDlgPromocoesZht;
+        
     }
 
     /**
@@ -31,7 +47,7 @@ public class JDlgPesquisarPromocoes extends javax.swing.JDialog {
 
         jBtnOkay = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTablePromocoes = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -43,7 +59,7 @@ public class JDlgPesquisarPromocoes extends javax.swing.JDialog {
             }
         });
 
-        jTablePromocoes.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -54,7 +70,7 @@ public class JDlgPesquisarPromocoes extends javax.swing.JDialog {
                 "ID", "Nome", "Data de Início", "Desconto"
             }
         ));
-        jScrollPane1.setViewportView(jTablePromocoes);
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,6 +148,6 @@ public class JDlgPesquisarPromocoes extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnOkay;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTablePromocoes;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
