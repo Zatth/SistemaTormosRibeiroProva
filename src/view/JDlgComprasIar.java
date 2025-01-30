@@ -9,8 +9,10 @@ import bean.CompraIar;
 import bean.FuncionarioIar;
 import dao.CompraIarDAO;
 import dao.FuncionarioIarDAO;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import tools.Util;
 
 /**
@@ -20,6 +22,8 @@ import tools.Util;
 public class JDlgComprasIar extends javax.swing.JDialog {
  
     boolean incluir; // criação de variavel global
+    ControllerCompraIar controllerCompraIar;
+    ControllerCompraProdutoIar controllerCompraProdutoIar;
     /**
      * Creates new form JDlgComprasIar
      */
@@ -28,12 +32,13 @@ public class JDlgComprasIar extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Compras");
-         Util.habilitar(false, jCboFuncionario, jTxtCodigo, jFmtData, jTxtCodigo,
-                 jBtnConfirmar, jBtnCancelar, jCboPagamento);
+        Util.habilitar(false, jCboFuncionario, jTxtCodigo, jFmtData, jTxtCodigo,jCboPagamento,
+                 jBtnConfirmar, jBtnCancelar);
+
           FuncionarioIarDAO funcionarioIarDao = new FuncionarioIarDAO();
         List lista = funcionarioIarDao.listAll();
         for (int i = 0; i < lista.size(); i++) {
-            //jCboFuncionario.addItem((Funcionario)lista.get(i)); // for para chamar o list dos clientes 
+        //    jCboFuncionario.addItem((FuncionarioIar)lista.get(i)); // for para chamar o list dos clientes PQ TA DANDO ERROOOOOOOOOO
             
         }
      
@@ -41,15 +46,22 @@ public class JDlgComprasIar extends javax.swing.JDialog {
 
     public CompraIar viewBean() {
     CompraIar compra = new CompraIar();
-    compra.setIdCompraIar(Util.strToInt(jTxtCodigo.getText()));
-    compra.setFuncionarioIar((FuncionarioIar)jCboFuncionario.getSelectedItem());
-  // compra.setPagamentoCompraIarjCboPagamento.getSelectedItem());
 
-    //  vendas.setClienteIar((ClienteIar) jCboClientes.getSelectedItem());
-    
-   // vendas.setTotal(Util.strToDouble(jTxtTotal.getText()));
-        return null;
-    
+    compra.setIdCompraIar(Util.strToInt(jTxtCodigo.getText())); // Converte String para int
+    compra.setFuncionarioIar((FuncionarioIar) jCboFuncionario.getSelectedItem()); // Obtém o objeto selecionado
+    compra.setDataIar(Util.strToDate(jFmtData.getText())); // Converte String para Date
+    compra.setValorIar(Util.strToDouble(jTxtCodigo.getText())); // Converte String para double (assumindo que este campo representa o valor)
+    compra.setPagamentoCompraIar(jCboPagamento.getSelectedItem().toString()); // Obtém o valor do ComboBox como String
+
+    return compra;
+}
+
+public void beanView(CompraIar compra) {
+    jTxtCodigo.setText(Util.intToStr(compra.getIdCompraIar())); // Converte int para String
+    jCboFuncionario.setSelectedItem(compra.getFuncionarioIar()); // Define o objeto no ComboBox
+    jFmtData.setText(Util.dateToStr(compra.getDataIar())); // Converte Date para String
+    jTxtCodigo.setText(Util.doubleToStr(compra.getValorIar())); // Converte double para String
+    jCboPagamento.setSelectedItem(compra.getPagamentoCompraIar()); // Define a seleção no ComboBox
 }
     
     /**
@@ -286,6 +298,7 @@ public class JDlgComprasIar extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
+       
         //   Util.habilitar(true,jFtmtCpf, jTxtCodigo, jTxtDataNasc, jTxtNome,jPwfSenha, jTxtApelido, jChbAtivo, jCboNivel,
             //     jBtnConfirmar, jBtnCancelar);
         // Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir,jBtnPesquisar);
@@ -352,7 +365,10 @@ public class JDlgComprasIar extends javax.swing.JDialog {
             //   UsuariosIarDao usuariosDao = new UsuariosIarDao();
             //  usuariosDao.delete(usuarios);}
         //limpar();
-        JOptionPane.showInputDialog(null, "Deseja excluir o produto?");
+       if(Util.perguntar("Deseja excluir o pedido?")==true){
+            int rowSel = jTable1.getSelectedRow();
+            controllerCompraProdutoIar.deleteBean(rowSel); //  index ou rowSel
+       } 
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnAlterar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar3ActionPerformed
@@ -386,6 +402,10 @@ public class JDlgComprasIar extends javax.swing.JDialog {
                     //  }else{jChbAtivo.setSelected(false);}
 
                 // }
+                
+                JDlgCompraIarPesquisar jDlgCompraIarPesquisar = new JDlgCompraIarPesquisar(null, true);
+        jDlgCompraIarPesquisar.setTelaAnterior(this); // PQ TA COM ERRO
+        jDlgCompraIarPesquisar.setVisible(true);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
