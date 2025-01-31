@@ -6,6 +6,10 @@
 package view;
 
 import bean.CompraIar;
+import dao.CompraIarDAO;
+import dao.VendasDAO;
+import java.util.ArrayList;
+import java.util.List;
 import view.ControllerCompraIar;
 
 /**
@@ -14,15 +18,23 @@ import view.ControllerCompraIar;
  */
 public class JDlgCompraIarPesquisar extends javax.swing.JDialog {
 
-    ControllerCompraIar controllerCompraIar = new ControllerCompraIar();
+    ControllerCompraIar controllerCompraIar;
     JDlgComprasIar jDlgComprasIar;
-
     /**
      * Creates new form JDlgCompraIarPesquisar
      */
     public JDlgCompraIarPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Compra");
+        
+        controllerCompraIar= new ControllerCompraIar();
+        CompraIarDAO compraIarDAO = new CompraIarDAO();
+        List lista = compraIarDAO.listAll();
+        
+        controllerCompraIar.setLista(lista); // QUE ERRO É ESSE PLMDDS
+        jTable1.setModel(controllerCompraIar);
     }
 
     public void setTelaAnterior(JDlgComprasIar jDlgComprasIar) {
@@ -38,9 +50,12 @@ public class JDlgCompraIarPesquisar extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jBtnOk = new javax.swing.JButton();
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -147,6 +162,7 @@ public class JDlgCompraIarPesquisar extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnOk;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

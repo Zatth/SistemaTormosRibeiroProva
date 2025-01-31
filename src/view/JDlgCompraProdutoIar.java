@@ -23,7 +23,7 @@ public class JDlgCompraProdutoIar extends javax.swing.JDialog {
     public JDlgCompraProdutoIar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
+        setLocationRelativeTo(null);
         ProdutoZhtDAO produtoDAO = new ProdutoZhtDAO();
         List lista = produtoDAO.listAll();
         for (int i = 0; i < lista.size(); i++) {
@@ -159,10 +159,12 @@ public class JDlgCompraProdutoIar extends javax.swing.JDialog {
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
 
     }//GEN-LAST:event_jBtnOkActionPerformed
 
