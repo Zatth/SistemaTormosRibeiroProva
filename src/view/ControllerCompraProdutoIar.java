@@ -19,6 +19,7 @@ public class ControllerCompraProdutoIar extends AbstractTableModel {
     
     public void setLista (List lista) {
         this.lista = lista;
+        this.fireTableDataChanged();
     }
     
     public CompraProdutoIar getBean(int rowIndex){

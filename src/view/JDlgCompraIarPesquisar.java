@@ -6,6 +6,7 @@
 package view;
 
 import bean.CompraIar;
+import view.ControllerCompraIar;
 
 /**
  *
@@ -13,12 +14,19 @@ import bean.CompraIar;
  */
 public class JDlgCompraIarPesquisar extends javax.swing.JDialog {
 
+    ControllerCompraIar controllerCompraIar = new ControllerCompraIar();
+    JDlgComprasIar jDlgComprasIar;
+
     /**
      * Creates new form JDlgCompraIarPesquisar
      */
     public JDlgCompraIarPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+
+    public void setTelaAnterior(JDlgComprasIar jDlgComprasIar) {
+        this.jDlgComprasIar = jDlgComprasIar;
     }
 
     /**
@@ -49,7 +57,6 @@ public class JDlgCompraIarPesquisar extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jBtnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ok.png"))); // NOI18N
         jBtnOk.setText("OK");
         jBtnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +81,7 @@ public class JDlgCompraIarPesquisar extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jBtnOk)
                 .addContainerGap())
@@ -87,8 +94,13 @@ public class JDlgCompraIarPesquisar extends javax.swing.JDialog {
         // TODO add your handling code here:
         int rowSel = jTable1.getSelectedRow();
         CompraIar compra = controllerCompraIar.getBean(rowSel);
-        jDlgCompraIar.beanView(compra);
+        jDlgComprasIar.beanView(compra);
         setVisible(false);
+
+//        int rowSel = jTable1.getSelectedRow();
+//        GssVenda venda = controllerVenda.getBean(rowSel);
+//        jDlgVenda.beanView(venda);
+//        setVisible(false)
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     /**

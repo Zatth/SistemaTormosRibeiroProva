@@ -136,6 +136,24 @@ public class FuncionarioIar  implements java.io.Serializable {
     public void setFuncaoFuncionarioIar(String funcaoFuncionarioIar) {
         this.funcaoFuncionarioIar = funcaoFuncionarioIar;
     }
+    
+    
+    @Override
+    public String toString() {
+        return this.idFuncionarioIar + " - " + this.nomeFuncionarioIar;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof ClienteIar) {
+            FuncionarioIar funcionario = (FuncionarioIar) object;
+            if (funcionario.getIdFuncionarioIar() == this.getIdFuncionarioIar()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 
 

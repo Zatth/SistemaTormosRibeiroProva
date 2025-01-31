@@ -5,6 +5,7 @@
  */
 package dao;
 
+import bean.CompraIar;
 import bean.CompraProdutoIar;
 import java.util.ArrayList;
 import org.hibernate.Criteria;
@@ -54,6 +55,14 @@ public class CompraProdutoIarDAO extends DAO_Abstract {
 
     @Override
     public ArrayList listAll() {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(CompraProdutoIar.class);
+        ArrayList lista = (ArrayList) criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+   
+    public ArrayList listCompras(CompraIar compras) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(CompraProdutoIar.class);
         ArrayList lista = (ArrayList) criteria.list();
