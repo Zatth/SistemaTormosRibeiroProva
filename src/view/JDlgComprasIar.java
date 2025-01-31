@@ -98,7 +98,7 @@ public class JDlgComprasIar extends javax.swing.JDialog {
         jBtnConfirmar = new javax.swing.JButton();
         jBtnExcluir = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jBtnAlterar3 = new javax.swing.JButton();
+        jBtnAlterar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jBtnPesquisar = new javax.swing.JButton();
@@ -159,11 +159,11 @@ public class JDlgComprasIar extends javax.swing.JDialog {
 
         jLabel4.setText("Funcionário");
 
-        jBtnAlterar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar.png"))); // NOI18N
-        jBtnAlterar3.setText("Alterar");
-        jBtnAlterar3.addActionListener(new java.awt.event.ActionListener() {
+        jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar.png"))); // NOI18N
+        jBtnAlterar.setText("Alterar");
+        jBtnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnAlterar3ActionPerformed(evt);
+                jBtnAlterarActionPerformed(evt);
             }
         });
 
@@ -207,7 +207,7 @@ public class JDlgComprasIar extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jBtnIncluir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jBtnAlterar3)
+                        .addComponent(jBtnAlterar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBtnExcluir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -276,7 +276,7 @@ public class JDlgComprasIar extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jBtnIncluir)
-                            .addComponent(jBtnAlterar3)
+                            .addComponent(jBtnAlterar)
                             .addComponent(jBtnExcluir)
                             .addComponent(jBtnCancelar)
                             .addComponent(jBtnConfirmar)
@@ -295,8 +295,9 @@ public class JDlgComprasIar extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here: incluir, tem q chamar a tela de pedidos produtos
-        JDlgCompraProdutoIar jDlgCompraProduto = new JDlgCompraProdutoIar(null, true);
-        jDlgCompraProduto.setVisible(true);
+        JDlgCompraProdutoIar jDlgCompraProdutoIar = new JDlgCompraProdutoIar(null, true);
+        jDlgCompraProdutoIar.setVisible(true);
+        setLocationRelativeTo(null);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -307,6 +308,11 @@ public class JDlgComprasIar extends javax.swing.JDialog {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here: excluir
         //JOptionPane.showInputDialog(null, "Deseja excluir o produto?");
+           if (Util.perguntar("Confirma exclusão do produto?") == true) {
+            int rowSel = jTable1.getSelectedRow();
+            controllerCompraProdutoIar.deleteBean(rowSel);
+            
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
@@ -381,14 +387,19 @@ public class JDlgComprasIar extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
-    private void jBtnAlterar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar3ActionPerformed
+    private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         //Util.habilitar(true,jFtmtCpf, jTxtCodigo, jTxtDataNasc, jTxtNome, jPwfSenha, jTxtApelido, jChbAtivo, jCboNivel,
         // jBtnConfirmar, jBtnCancelar);
         //Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir,jBtnPesquisar);
         /// TODO add your handling code here:
         // habilitar();
         incluir = false;
-    }//GEN-LAST:event_jBtnAlterar3ActionPerformed
+         Util.habilitar(true,jCboFuncionario, jTxtCodigo, jCboCliente, jCboFuncionario, jFmtData, jTxtCodigo);
+        //    jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir,jBtnPesquisar);
+        //colocar util limpar
+        
+    }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
         // TODO add your handling code here:
@@ -412,16 +423,18 @@ public class JDlgComprasIar extends javax.swing.JDialog {
         //  }else{jChbAtivo.setSelected(false);}
         // }
         JDlgCompraIarPesquisar jDlgCompraIarPesquisar = new JDlgCompraIarPesquisar(null, true);
-        jDlgCompraIarPesquisar.setTelaAnterior(this); // PQ TA COM ERRO
+        jDlgCompraIarPesquisar.setTelaAnterior(this); 
         jDlgCompraIarPesquisar.setVisible(true);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-        //  Util.habilitar(false,jFtmtCpf, jTxtCodigo, jTxtDataNasc, jTxtNome, jPwfSenha, jTxtApelido, jChbAtivo, jCboNivel,
+        Util.habilitar(true,jCboFuncionario, jTxtCodigo, jCboCliente, jCboFuncionario, jFmtData, jTxtCodigo);
         //    jBtnConfirmar, jBtnCancelar);
-        // Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir,jBtnPesquisar);
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir,jBtnPesquisar);
+        incluir = false;
         // TODO add your handling code here:
         //9+        desabilitar();
+        
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**
@@ -467,7 +480,7 @@ public class JDlgComprasIar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBtnAlterar3;
+    private javax.swing.JButton jBtnAlterar;
     private javax.swing.JButton jBtnCancelar;
     private javax.swing.JButton jBtnConfirmar;
     private javax.swing.JButton jBtnExcluir;
