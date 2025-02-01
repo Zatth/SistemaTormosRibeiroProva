@@ -3,16 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/view/ControllerClienteIar.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/bean/VendasZht.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/view/JDlgPesquisarPromocoes.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/bean/ProdutoZht.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/bean/VendasClientesZht.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/bean/ClienteIar.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/view/JDlgFornecedorZhtPesquisar.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/view/JDlgPromocoesZht.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/view/JDlgFornecedorZht.java</file>
-            <file>file:/D:/SistemaTormosRibeiroProva/src/dao/ClienteIarDAO.java</file>
+            <file>file:/D:/SistemaTormosRibeiroProva/src/dao/CompraIarDAO.java</file>
+            <file>file:/D:/SistemaTormosRibeiroProva/src/view/JDlgCompraIarPesquisar.java</file>
+            <file>file:/D:/SistemaTormosRibeiroProva/src/view/JDlgCompraProdutoIar.java</file>
+            <file>file:/D:/SistemaTormosRibeiroProva/src/view/JDlgComprasIar.java</file>
         </group>
     </open-files>
 </project-private>

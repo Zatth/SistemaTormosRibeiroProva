@@ -54,6 +54,10 @@ public class ProdutoVendasZht  implements java.io.Serializable {
         this.quantidadeZht = quantidadeZht;
     }
 
+    public void setVendasZht(VendasZht vendas) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
 
 

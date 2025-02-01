@@ -333,51 +333,50 @@ public class JDlgComprasIar extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
+        CompraIar compras = viewBean();
+        CompraIarDAO compraIarDAO = new CompraIarDAO();
+        CompraProdutoIarDAO compraProdutoIarDAO = new CompraProdutoIarDAO();
 
-        // Util.habilitar(false,jFtmtCpf, jTxtCodigo, jTxtDataNasc, jTxtNome, jPwfSenha, jTxtApelido, jChbAtivo, jCboNivel,
-        //    jBtnConfirmar, jBtnCancelar);
-        // Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir,jBtnPesquisar);
-        //        desabilitar();
-        // limpar();
-        CompraIar compra = viewBean();
-        CompraIarDAO compraDAO = new CompraIarDAO();
         if (incluir == true) {
-            compraDAO.insert(compra);
+            compraIarDAO.insert(compras);
+            for (int i = 0; i < jTable1.getRowCount(); i++) {
+                CompraProdutoIar compraProdutoIar = controllerCompraProdutoIar.getBean(i);
+                compraProdutoIar.setCompraIar(compras);
+                compraProdutoIarDAO.insert(compraProdutoIar);
+            }
         } else {
-            compraDAO.update(compra);
+            compraIarDAO.update(compras);
         }
         
-        Util.habilitar(false,jCboFuncionario, jTxtCodigo, jCboCliente, jCboFuncionario, jFmtData, jTxtCodigo,jBtnConfirmar, jBtnCancelar,
-                jBtnIncluirProd,jTable1);
-        //    jBtnConfirmar, jBtnCancelar);
-        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir,jBtnPesquisar);
-          Util.limpar(jTxtCodigo, jTable1, jFmtData, jCboFuncionario);
-
+        Util.habilitar(false, jCboFuncionario, jTxtCodigo, jCboCliente, jCboFuncionario, jFmtData, jTxtCodigo,
+                jBtnConfirmar, jBtnCancelar,jBtnAlterarProd, jBtnExcluirProd,jBtnIncluirProd); // TEM Q COLOCAR AS ÁREAS CERTAS AQUI!!!
+        Util.habilitar(true, jBtnAlterar,jBtnIncluir,jBtnPesquisar, jBtnExcluir);
+        Util.limpar(jTxtCodigo, jFmtData, jCboFuncionario, jCboCliente, jTable1);
+        
 
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
+   if (Util.perguntar("Confirmar Exclusão?") == true) {
+            CompraIar compras = viewBean();
+            CompraIarDAO compraIarDAO = new CompraIarDAO();
+            CompraProdutoIarDAO compraProdutoIarDAO = new CompraProdutoIarDAO();
 
-        if (Util.perguntar("Deseja excluir o pedido?") == true) {
-            int rowSel = jTable1.getSelectedRow();
-            controllerCompraProdutoIar.deleteBean(rowSel); //  index ou rowSel
+            for (int i = 0; i < jTable1.getRowCount(); i++) {
+                CompraProdutoIar compraProdutoIar = controllerCompraProdutoIar.getBean(i);
+                System.out.println(compraProdutoIar);
+                compraProdutoIar.setCompraIar(compras);
+                compraProdutoIarDAO.delete(compraProdutoIar);
+
+            }
+            compraIarDAO.delete(compras);
+            Util.limpar(jTxtCodigo, jTable1, jFmtData, jCboFuncionario, jTable1);
+
+            Util.mostrar("Exclusão Realizada.");
+
+        } else {
+            Util.mostrar("Exclusão Cancelada.");
         }
-        
-        ////////////////////////////////////////////////////////////////////////////////////// QUAL USA
-        
-        
-//         if (Util.perguntar("Deseja Excluir?") == true){
-//            CompraIar compra = viewBean();
-//            CompraProdutoIarDAO compraProdutoIarDAO = new CompraProdutoIarDAO();
-//
-//            for(int i = 0; i < jTable1.getRowCount(); i++){
-//             CompraProdutoIar compraProdutoIar = controllerCompraProdutoIar.getBean(i);
-//             compraProdutoIarDAO.delete(CompraProdutoIar); // ??
-//            }
-//            
-//            CompraIarDAO compraIarDAO = new CompraIarDAO();
-//            compraIarDAO.delete(compra);
-//        } 
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
@@ -405,12 +404,12 @@ public class JDlgComprasIar extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-           Util util = new Util();
 
         Util.habilitar(false,jCboFuncionario, jTxtCodigo, jCboCliente, jCboFuncionario, jFmtData, jTxtCodigo,
                 jBtnCancelar,jBtnConfirmar,jBtnIncluirProd);
         //    jBtnConfirmar, jBtnCancelar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir,jBtnPesquisar);
+        Util.limpar(jTxtCodigo, jCboCliente, jFmtData, jCboFuncionario, jTable1);
         incluir = false;
         // TODO add your handling code here:
         //9+        desabilitar();
