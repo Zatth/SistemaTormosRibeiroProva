@@ -2,6 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
+
+//ZAHRAA AQUI TIO, FIZ AS COISAS NO COMPRAIAR, ESSE NAO PRESTA
 package view;
 
 import bean.ClienteIar; // CLIENTES CLIENTEIAR
@@ -491,7 +493,7 @@ if (Util.perguntar("Confirmar Exclusão?") == true) {
     private javax.swing.JButton jBtnIncluirProd;
     private javax.swing.JButton jBtnPesquisar;
     private javax.swing.JComboBox<String> jCboCliente;
-    private javax.swing.JComboBox<String> jCboFuncionario;
+    private javax.swing.JComboBox<>> jCboFuncionario;
     private javax.swing.JFormattedTextField jFmtData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

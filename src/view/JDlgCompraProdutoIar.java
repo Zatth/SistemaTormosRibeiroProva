@@ -6,6 +6,7 @@
 package view;
 
 import bean.ClienteIar;
+import bean.CompraProdutoIar;
 import bean.ProdutoZht;
 import dao.ClienteIarDAO;
 import dao.ProdutoZhtDAO;
@@ -148,8 +149,8 @@ public class JDlgCompraProdutoIar extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jTxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
+                    .addComponent(jTxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBtnOk)
@@ -195,6 +196,13 @@ public class JDlgCompraProdutoIar extends javax.swing.JDialog {
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
+        CompraProdutoIar compraProdutoIar = new CompraProdutoIar();
+        compraProdutoIar.setProdutoZht((ProdutoZht) jCboProduto.getSelectedItem());
+        
+        compraProdutoIar.setQuantidadeIar(Util.strToInt(jTxtQuant.getText()));
+        //compraProdutoIar.setPrecoProdutoZht(Util.strToDouble(jTxtValorUnitario.getText()));
+      //  compraProdutoIar.setMeccTotal(Util.strToDouble(jTxtMecc_Total.getText()));
+        //jDlgMecc_Compra.controllerCompraProduto.addBean(comprasProdutos);
         setVisible(false);
 
     }//GEN-LAST:event_jBtnOkActionPerformed

@@ -13,10 +13,13 @@ import dao.ClienteIarDAO;
 import dao.CompraIarDAO;
 import dao.CompraProdutoIarDAO;
 import dao.FuncionarioIarDAO;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 import tools.Util;
 
 /**
@@ -25,8 +28,9 @@ import tools.Util;
  */
 public class JDlgComprasIar extends javax.swing.JDialog {
 
-    boolean incluir; // criação de variavel global
+    boolean incluir = true; // criação de variavel global
     ControllerCompraIar controllerCompraIar;
+     private MaskFormatter mascaraData;
     ControllerCompraProdutoIar controllerCompraProdutoIar;
 
     /**
@@ -37,9 +41,16 @@ public class JDlgComprasIar extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Compras");
+        
+         try {
+            mascaraData = new MaskFormatter("##/##/####");
+        } catch (ParseException exc) {
+        }
+        jFmtData.setFormatterFactory(new DefaultFormatterFactory(mascaraData));
         Util.habilitar(false, jCboFuncionario, jTxtCodigo, jFmtData, jTxtCodigo, jCboCliente,
                 jBtnConfirmar, jBtnCancelar);
-
+        
+        
         FuncionarioIarDAO funcionarioIarDao = new FuncionarioIarDAO();
         List lista = funcionarioIarDao.listAll();
         for (int i = 0; i < lista.size(); i++) {
@@ -123,10 +134,22 @@ public class JDlgComprasIar extends javax.swing.JDialog {
             }
         });
 
+        jFmtData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFmtDataActionPerformed(evt);
+            }
+        });
+
         jBtnExcluirProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Excluir.png"))); // NOI18N
         jBtnExcluirProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnExcluirProdActionPerformed(evt);
+            }
+        });
+
+        jCboFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCboFuncionarioActionPerformed(evt);
             }
         });
 
@@ -340,7 +363,7 @@ public class JDlgComprasIar extends javax.swing.JDialog {
         if (incluir == true) {
             compraIarDAO.insert(compras);
             for (int i = 0; i < jTable1.getRowCount(); i++) {
-                CompraProdutoIar compraProdutoIar = controllerCompraProdutoIar.getBean(i);
+                CompraProdutoIar compraProdutoIar = controllerCompraProdutoIar.getBean(i); // MOSTRA AQUI
                 compraProdutoIar.setCompraIar(compras);
                 compraProdutoIarDAO.insert(compraProdutoIar);
             }
@@ -415,6 +438,14 @@ public class JDlgComprasIar extends javax.swing.JDialog {
         //9+        desabilitar();
         
     }//GEN-LAST:event_jBtnCancelarActionPerformed
+
+    private void jCboFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboFuncionarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCboFuncionarioActionPerformed
+
+    private void jFmtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFmtDataActionPerformed
 
     /**
      * @param args the command line arguments

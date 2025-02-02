@@ -19,8 +19,8 @@ public class ClienteIarDAO extends DAO_Abstract {
     @Override
     public void insert(Object object) {
         session.beginTransaction();
-        session.save(object);
-        session.beginTransaction().commit();
+        session.merge(object);
+        session.getTransaction().commit();
     }
 
     @Override
@@ -29,7 +29,7 @@ public class ClienteIarDAO extends DAO_Abstract {
         session.flush(); // 
         session.clear(); // ta limpando
         session.update(object);
-        session.beginTransaction().commit();
+        session.getTransaction().commit();
     }
 
     @Override
@@ -38,7 +38,7 @@ public class ClienteIarDAO extends DAO_Abstract {
         session.flush();
         session.clear();
         session.delete(object);
-        session.beginTransaction().commit();
+        session.getTransaction().commit();
     }
 
     @Override

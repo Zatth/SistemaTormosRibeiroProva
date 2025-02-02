@@ -42,7 +42,7 @@ public class Util {
    // daqui pra baixo catei do dudu
     public static int strToInt(String cad) {
          try {
-            return Integer.parseInt(cad.trim());
+            return Integer.parseInt(cad);
          } catch (NumberFormatException e) {
             mostrar("Erro: não é possível converter '" + cad + "' para inteiro.");
             return 0;
@@ -55,7 +55,7 @@ public class Util {
      
      public static double strToDouble(String cad) {
          try {
-            return Double.parseDouble(cad.trim());
+            return Double.parseDouble(cad);
          } catch (NumberFormatException e) {
             mostrar("Erro: não é possível converter '" + cad + "' para double.");
             return 0.0;
@@ -70,7 +70,7 @@ public class Util {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             
             try {
-                return sdf.parse(cad.trim());
+                return sdf.parse(cad);
             } catch (ParseException e) {
                 mostrar("Erro: não é possível converter '" + cad + "' para data.");
                 return null;
