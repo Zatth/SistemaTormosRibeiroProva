@@ -34,7 +34,7 @@ public class JDlgVendasZhtPesquisar extends javax.swing.JDialog {
         jTable1.setModel(controllerVendasZht);
     }
 
-    public void setTelaAnterior(JDlgComprasIar jDlgComprasIar) {
+    public void setTelaAnterior(JDlgVendasZht jDlgVendasZht) {
         this.jDlgVendasZht = jDlgVendasZht;
     
     }

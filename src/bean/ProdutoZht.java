@@ -56,7 +56,7 @@ public class ProdutoZht implements java.io.Serializable {
     }
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    
 
     @Column(name = "id_produto_zht", unique = true, nullable = false)
     public int getIdProdutoZht() {

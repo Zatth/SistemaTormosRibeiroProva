@@ -49,15 +49,15 @@ public class JDlgVendasZht extends javax.swing.JDialog {
                  jBtnConfirmar, jBtnCancelar);
          
           FuncionarioIarDAO funcionarioIarDao = new FuncionarioIarDAO();
-        List lista = funcionarioIarDao.listAll();
-        for (int i = 0; i < lista.size(); i++) {
-            jCboFuncionario.addItem((FuncionarioIar) lista.get(i)); // for para chamar o list dos clientes PQ TA DANDO ERROOOOOOOOOO
+        List listaFuncionario = funcionarioIarDao.listAll();
+        for (int i = 0; i < listaFuncionario.size(); i++) {
+            jCboFuncionario.addItem((FuncionarioIar) listaFuncionario.get(i)); // for para chamar o list dos clientes PQ TA DANDO ERROOOOOOOOOO
         }
      
         ClienteIarDAO clienteIarDAO = new ClienteIarDAO();
-        List lista = clienteIarDAO.listAll();
-        for (int i = 0; i < lista.size(); i++) {
-            jCboCliente.addItem((ClienteIar)lista.get(i)); // for para chamar o list dos clientes 
+        List listaCliente = clienteIarDAO.listAll();
+        for (int i = 0; i < listaCliente.size(); i++) {
+            jCboCliente.addItem((ClienteIar)listaCliente.get(i)); // for para chamar o list dos clientes 
             
         }
     }
@@ -102,7 +102,7 @@ public void beanView(VendasZht venda) {
         jLabel5 = new javax.swing.JLabel();
         jTxtTotal = new javax.swing.JTextField();
         jFmtData = new javax.swing.JFormattedTextField();
-        jCboFuncionario = new javax.swing.JComboBox<>();
+        jCboFuncionario = new javax.swing.JComboBox<FuncionarioIar>();
         jBtnIncluir = new javax.swing.JButton();
         jBtnConfirmar = new javax.swing.JButton();
         jBtnExcluir = new javax.swing.JButton();
@@ -112,7 +112,7 @@ public void beanView(VendasZht venda) {
         jBtnIncluirProd = new javax.swing.JButton();
         jBtnAlterarProd = new javax.swing.JButton();
         jBtnExcluirProd = new javax.swing.JButton();
-        jCboCliente = new javax.swing.JComboBox<>();
+        jCboCliente = new javax.swing.JComboBox<ClienteIar>();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -127,7 +127,7 @@ public void beanView(VendasZht venda) {
 
         jLabel3.setText("Cliente");
 
-        jLabel4.setText("Vendedor");
+        jLabel4.setText("Funcionario");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -153,7 +153,6 @@ public void beanView(VendasZht venda) {
 
         jFmtData.setText("jFormattedTextField1");
 
-        jCboFuncionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jCboFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCboFuncionarioActionPerformed(evt);
@@ -229,8 +228,6 @@ public void beanView(VendasZht venda) {
             }
         });
 
-        jCboCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -264,8 +261,8 @@ public void beanView(VendasZht venda) {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
-                                    .addComponent(jCboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(50, 50, 50)
+                                    .addComponent(jCboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
                                     .addComponent(jCboFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -376,7 +373,7 @@ if (Util.perguntar("Confirmar Exclusão?") == true) {
                 produtoVendasZhtDAO.delete(produtoVendasZht);
 
             }
-            VendasDAO.delete(vendas); // PQ TA DANO ERRO
+            vendasDAO.delete(vendas);
             Util.limpar(jTxtCodigo, jTable1, jFmtData, jCboFuncionario, jTable1);
 
             Util.mostrar("Exclusão Realizada.");
@@ -492,8 +489,8 @@ if (Util.perguntar("Confirmar Exclusão?") == true) {
     private javax.swing.JButton jBtnIncluir;
     private javax.swing.JButton jBtnIncluirProd;
     private javax.swing.JButton jBtnPesquisar;
-    private javax.swing.JComboBox<String> jCboCliente;
-    private javax.swing.JComboBox<>> jCboFuncionario;
+    private javax.swing.JComboBox<ClienteIar> jCboCliente;
+    private javax.swing.JComboBox<FuncionarioIar> jCboFuncionario;
     private javax.swing.JFormattedTextField jFmtData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

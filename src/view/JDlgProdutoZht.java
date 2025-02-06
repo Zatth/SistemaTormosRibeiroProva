@@ -31,10 +31,10 @@ public class JDlgProdutoZht extends javax.swing.JDialog {
     public ProdutoZht viewBean() {
     ProdutoZht produto = new ProdutoZht();
     
-    produto.setIdProdutoZht((byte) Util.strToInt(jTxtId.getText())); // Converte para Byte
+    produto.setIdProdutoZht(Util.strToInt(jTxtId.getText()));
     produto.setNomeProdutoZht(jTxtNome.getText());
-    produto.setPrecoProdutoZht(Util.strToDouble(jTxtPreco.getText())); // Converte para Double
-    produto.setQtdEstoqueProdutoZht(Util.strToInt(jTxtQuantidade.getText())); // Converte para int
+    produto.setPrecoProdutoZht(Util.strToDouble(jTxtPreco.getText()));
+    produto.setQtdEstoqueProdutoZht(Util.strToInt(jTxtQuantidade.getText()));
     produto.setFotoZht(jTxtFoto.getText());
     produto.setCategoriaProdutoZht(jTxtCategoria.getText());
     produto.setDescricaoProdutoZht(jTxtDescricao.getText());
@@ -308,6 +308,7 @@ public void beanView(ProdutoZht produto) {
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
 //habilitar();
+incluir = false;
 Util.habilitar(true, jTxtQuantidade, jTxtFoto, jTxtNome,jTxtCategoria, jTxtDescricao, jTxtId, jTxtPreco,
                 jBtnConfirmar, jBtnCancelar);
       Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir,jBtnPesquisar);

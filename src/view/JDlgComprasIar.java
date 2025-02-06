@@ -84,6 +84,7 @@ public class JDlgComprasIar extends javax.swing.JDialog {
         jFmtData.setText(Util.dateToStr(compra.getDataIar())); // Converte Date para String
         jTxtCodigo.setText(Util.doubleToStr(compra.getValorIar())); // Converte double para String
         jCboCliente.setSelectedItem(compra.getPagamentoCompraIar()); // Define a seleção no ComboBox
+        
         CompraProdutoIarDAO compraProdutoIarDAO = new CompraProdutoIarDAO();
         List lista = (List) compraProdutoIarDAO.listCompras(compra);
         controllerCompraProdutoIar.setLista(lista);
@@ -222,6 +223,12 @@ public class JDlgComprasIar extends javax.swing.JDialog {
 
         jLabel5.setText("Cliente");
 
+        jCboCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCboClienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -327,8 +334,7 @@ public class JDlgComprasIar extends javax.swing.JDialog {
 
     private void jBtnAlterarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarProdActionPerformed
         // TODO add your handling code here: tem q chamar a tela de produtos
-        JDlgCompraProdutoIar jdlgCompraProdutoIar = new JDlgCompraProdutoIar(null, true);
-        jdlgCompraProdutoIar.setVisible(true);
+        
     }//GEN-LAST:event_jBtnAlterarProdActionPerformed
 
     private void jBtnExcluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirProdActionPerformed
@@ -363,6 +369,7 @@ public class JDlgComprasIar extends javax.swing.JDialog {
         if (incluir == true) {
             compraIarDAO.insert(compras);
             for (int i = 0; i < jTable1.getRowCount(); i++) {
+                
                 CompraProdutoIar compraProdutoIar = controllerCompraProdutoIar.getBean(i); // MOSTRA AQUI
                 compraProdutoIar.setCompraIar(compras);
                 compraProdutoIarDAO.insert(compraProdutoIar);
@@ -446,6 +453,10 @@ public class JDlgComprasIar extends javax.swing.JDialog {
     private void jFmtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtDataActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFmtDataActionPerformed
+
+    private void jCboClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCboClienteActionPerformed
 
     /**
      * @param args the command line arguments
