@@ -1,14 +1,12 @@
 package bean;
-// Generated 13/12/2024 19:27:56 by Hibernate Tools 4.3.1
+// Generated 06/02/2025 17:20:47 by Hibernate Tools 4.3.1
 
 
-
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -39,12 +37,12 @@ public class FornecedorZht  implements java.io.Serializable {
      private String paisZht;
      private String dddZht;
 
-
     public FornecedorZht() {
     }
 
 	
-    public FornecedorZht(String nomeZht, String cnpjZht, String emailZht, String cepZht, String enderecoZht, String cidadeZht, String estadoZht, String nomeFuncionarioZht, String bairroZht, String ruaZht, String complementoZht, String contatoZht, String paisZht, String dddZht) {
+    public FornecedorZht(int idfornecedorZht, String nomeZht, String cnpjZht, String emailZht, String cepZht, String enderecoZht, String cidadeZht, String estadoZht, String nomeFuncionarioZht, String bairroZht, String ruaZht, String complementoZht, String contatoZht, String paisZht, String dddZht) {
+        this.idfornecedorZht = idfornecedorZht;
         this.nomeZht = nomeZht;
         this.cnpjZht = cnpjZht;
         this.emailZht = emailZht;
@@ -60,7 +58,8 @@ public class FornecedorZht  implements java.io.Serializable {
         this.paisZht = paisZht;
         this.dddZht = dddZht;
     }
-    public FornecedorZht(String nomeZht, String cnpjZht, String emailZht, String cepZht, String enderecoZht, String cidadeZht, String estadoZht, String nomeFuncionarioZht, String bairroZht, String ruaZht, String complementoZht, String contatoZht, String paisZht, String dddZht, Set compraFornecedorIars, Set produtoZhts) {
+    public FornecedorZht(int idfornecedorZht, String nomeZht, String cnpjZht, String emailZht, String cepZht, String enderecoZht, String cidadeZht, String estadoZht, String nomeFuncionarioZht, String bairroZht, String ruaZht, String complementoZht, String contatoZht, String paisZht, String dddZht, Set compraIars) {
+       this.idfornecedorZht = idfornecedorZht;
        this.nomeZht = nomeZht;
        this.cnpjZht = cnpjZht;
        this.emailZht = emailZht;
@@ -75,10 +74,9 @@ public class FornecedorZht  implements java.io.Serializable {
        this.contatoZht = contatoZht;
        this.paisZht = paisZht;
        this.dddZht = dddZht;
-     
     }
    
-     @Id @GeneratedValue(strategy=IDENTITY)
+     @Id 
 
     
     @Column(name="idfornecedor_zht", unique=true, nullable=false)
@@ -229,7 +227,6 @@ public class FornecedorZht  implements java.io.Serializable {
     public void setDddZht(String dddZht) {
         this.dddZht = dddZht;
     }
-
 
 
 

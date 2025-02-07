@@ -1,5 +1,6 @@
 package bean;
-// Generated 13/12/2024 19:27:56 by Hibernate Tools 4.3.1
+// Generated 06/02/2025 17:20:47 by Hibernate Tools 4.3.1
+
 
 
 import javax.persistence.AttributeOverride;
@@ -26,15 +27,17 @@ public class CompraProdutoIar  implements java.io.Serializable {
      private CompraIar compraIar;
      private ProdutoZht produtoZht;
      private int quantidadeIar;
+     private double valorUnitarioIar;
 
     public CompraProdutoIar() {
     }
 
-    public CompraProdutoIar(CompraProdutoIarId id, CompraIar compraIar, ProdutoZht produtoZht, int quantidadeIar) {
+    public CompraProdutoIar(CompraProdutoIarId id, CompraIar compraIar, ProdutoZht produtoZht, int quantidadeIar, double valorUnitarioIar) {
        this.id = id;
        this.compraIar = compraIar;
        this.produtoZht = produtoZht;
        this.quantidadeIar = quantidadeIar;
+       this.valorUnitarioIar = valorUnitarioIar;
     }
    
      @EmbeddedId
@@ -79,6 +82,16 @@ public class CompraProdutoIar  implements java.io.Serializable {
     
     public void setQuantidadeIar(int quantidadeIar) {
         this.quantidadeIar = quantidadeIar;
+    }
+
+    
+    @Column(name="valorUnitario_iar", nullable=false, precision=7)
+    public double getValorUnitarioIar() {
+        return this.valorUnitarioIar;
+    }
+    
+    public void setValorUnitarioIar(double valorUnitarioIar) {
+        this.valorUnitarioIar = valorUnitarioIar;
     }
 
 

@@ -6,7 +6,6 @@
 package view;
 
 import bean.VendasZht;
-import dao.CompraIarDAO;
 import dao.VendasDAO;
 import java.util.List;
 
@@ -15,8 +14,8 @@ import java.util.List;
  * @author Zah
  */
 public class JDlgVendasZhtPesquisar extends javax.swing.JDialog {
-        ControllerVendasZht controllerVendasZht;
-        JDlgVendasZht jDlgVendasZht;
+         ControllerVendasZht controllerVendasZht;
+         JDlgVendasZht jDlgVendasZht;
     /**
      * Creates new form JDlgVendasZhtPesquisar
      */
@@ -24,13 +23,13 @@ public class JDlgVendasZhtPesquisar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Compra");
+        setTitle("Venda");
         
         controllerVendasZht = new ControllerVendasZht();
         VendasDAO vendasDAO = new VendasDAO();
         List lista = vendasDAO.listAll();
         
-        controllerVendasZht.setLista(lista); // QUE ERRO É ESSE PLMDDS
+        controllerVendasZht.setLista(lista); 
         jTable1.setModel(controllerVendasZht);
     }
 
@@ -106,11 +105,6 @@ public class JDlgVendasZhtPesquisar extends javax.swing.JDialog {
         VendasZht venda = controllerVendasZht.getBean(rowSel);
         jDlgVendasZht.beanView(venda);
         setVisible(false);
-
-        //        int rowSel = jTable1.getSelectedRow();
-        //        GssVenda venda = controllerVenda.getBean(rowSel);
-        //        jDlgVenda.beanView(venda);
-        //        setVisible(false)
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     /**

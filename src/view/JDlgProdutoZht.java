@@ -289,8 +289,9 @@ public void beanView(ProdutoZht produto) {
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
-         JDlgProdutosZhtPesquisar JDlgPesquisarProdutos = new JDlgProdutosZhtPesquisar(null, true);
-        JDlgPesquisarProdutos.setVisible(true);
+         JDlgProdutosZhtPesquisar jDlgPesquisarProdutos = new JDlgProdutosZhtPesquisar(null, true);
+         jDlgPesquisarProdutos.setTelaAnterior(this);
+        jDlgPesquisarProdutos.setVisible(true);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jTxtFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtFotoActionPerformed
@@ -299,6 +300,7 @@ public void beanView(ProdutoZht produto) {
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
 // habilitar();
+ incluir = true;
  Util.habilitar(true, jTxtQuantidade, jTxtFoto, jTxtNome,jTxtCategoria, jTxtDescricao, jTxtId, jTxtPreco,
                 jBtnConfirmar, jBtnCancelar);
       Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir,jBtnPesquisar);
@@ -324,30 +326,8 @@ Util.habilitar(true, jTxtQuantidade, jTxtFoto, jTxtNome,jTxtCategoria, jTxtDescr
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
-// ProdutoZht prod = new ProdutoZht();
-//        int cod = Integer.valueOf(jTxtId.getText());
-//        int qtd = Integer.valueOf(jTxtQuantidade.getText());
-//        double preco = Integer.valueOf(jTxtPreco.getText());
-//        prod.setId_produto_zht(cod);
-//        prod.setNome_produto_zht(jTxtNome.getText());
-//        prod.setQtd_estoque_produto_zht(qtd);
-//        prod.setFoto_produto_zht(jTxtFoto.getText());
-//        prod.setDescricao_produto_zht(jTxtDescricao.getText());
-//        prod.setPreco_produto_zht(preco);
-//        prod.setCategoria_produto_zht(jTxtCategoria.getText());
-//        
-//        
-//        ProdutoZhtDao prodDao = new ProdutoZhtDao();
-//        prodDao.insert(prod);
-//        
-//        
-//        limpar();
 
-Util.habilitar(false, jTxtQuantidade, jTxtFoto, jTxtNome,jTxtCategoria, jTxtDescricao, jTxtId, jTxtPreco,
-                jBtnConfirmar, jBtnCancelar);
-      Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir,jBtnPesquisar);
-      Util.limpar(jTxtQuantidade, jTxtFoto, jTxtNome,jTxtCategoria, jTxtDescricao, jTxtId, jTxtPreco);
-       ProdutoZht produto = viewBean();
+ ProdutoZht produto = viewBean();
           ProdutoZhtDAO produtoZhtDAO = new ProdutoZhtDAO();
        
         
@@ -356,6 +336,10 @@ Util.habilitar(false, jTxtQuantidade, jTxtFoto, jTxtNome,jTxtCategoria, jTxtDesc
         } else {
             produtoZhtDAO.update(produto);
         }
+Util.habilitar(false, jTxtQuantidade, jTxtFoto, jTxtNome,jTxtCategoria, jTxtDescricao, jTxtId, jTxtPreco,
+                jBtnConfirmar, jBtnCancelar);
+      Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir,jBtnPesquisar);
+      Util.limpar(jTxtQuantidade, jTxtFoto, jTxtNome,jTxtCategoria, jTxtDescricao, jTxtId, jTxtPreco);
         
        // desabilitar();
               // TODO add your handling code here:

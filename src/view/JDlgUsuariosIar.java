@@ -23,6 +23,7 @@ public class JDlgUsuariosIar extends javax.swing.JDialog {
      */
      boolean incluir;
     private MaskFormatter mascaraCPF;
+    private MaskFormatter mascaraData;
     public JDlgUsuariosIar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -30,13 +31,14 @@ public class JDlgUsuariosIar extends javax.swing.JDialog {
         setTitle("Usuários");
         try { // criando máscaras
             mascaraCPF = new MaskFormatter("###.###.###-##");
-            
+             mascaraData = new MaskFormatter("##/##/####");
         } catch (ParseException exc) {
         }
         jFtmtCpf.setFormatterFactory(new DefaultFormatterFactory(mascaraCPF));
+        jFmtDataNasc.setFormatterFactory(new DefaultFormatterFactory(mascaraData));
         
         Util.habilitar(true, jBtnAlterar, jBtnIncluir, jBtnExcluir, jBtnPesquisar);
-        Util.habilitar(false,jFtmtCpf, jTxtDataNasc,  jTxtNome, jTxtCodigo, jTxtApelido, jPwfSenha, jCboNivel, jChbAtivo, jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(false,jFtmtCpf, jFmtDataNasc,  jTxtNome, jTxtCodigo, jTxtApelido, jPwfSenha, jCboNivel, jChbAtivo, jBtnCancelar, jBtnConfirmar);
     }
     public UsuariosIar viewBean() {
     UsuariosIar usuario = new UsuariosIar();
@@ -45,7 +47,7 @@ public class JDlgUsuariosIar extends javax.swing.JDialog {
     usuario.setNomeUsuarioIar(jTxtNome.getText());
     usuario.setApelidoIar(jTxtApelido.getText());
     usuario.setCpfIar(jFtmtCpf.getText());
-    usuario.setDataNascimentoIar(Util.strToDate(jTxtDataNasc.getText())); // Converte String para Date
+    usuario.setDataNascimentoIar(Util.strToDate(jFmtDataNasc.getText())); // Converte String para Date
     usuario.setSenhaIar(new String(jPwfSenha.getPassword())); // Obtém a senha do JPasswordField
     usuario.setNivelIar(jCboNivel.getSelectedItem().toString()); // Obtém o valor selecionado no ComboBox
     usuario.setAtivoIar(jChbAtivo.isSelected() ? "S" : "N"); // "S" para ativo, "N" para inativo
@@ -58,7 +60,7 @@ public void beanView(UsuariosIar usuario) {
     jTxtNome.setText(usuario.getNomeUsuarioIar());
     jTxtApelido.setText(usuario.getApelidoIar());
     jFtmtCpf.setText(usuario.getCpfIar());
-    jTxtDataNasc.setText(Util.dateToStr(usuario.getDataNascimentoIar())); // Converte Date para String
+    jFmtDataNasc.setText(Util.dateToStr(usuario.getDataNascimentoIar())); // Converte Date para String
     jPwfSenha.setText(usuario.getSenhaIar());
     jCboNivel.setSelectedItem(usuario.getNivelIar()); // Seleciona o nível correspondente no ComboBox
     jChbAtivo.setSelected("S".equals(usuario.getAtivoIar())); // Marca se ativo for "S"
@@ -81,7 +83,6 @@ public void beanView(UsuariosIar usuario) {
         jLabel2 = new javax.swing.JLabel();
         jPwfSenha = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
-        jTxtDataNasc = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jBtnIncluir = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -94,6 +95,7 @@ public void beanView(UsuariosIar usuario) {
         jBtnPesquisar = new javax.swing.JButton();
         jCboNivel = new javax.swing.JComboBox<>();
         jBtnCancelar = new javax.swing.JButton();
+        jFmtDataNasc = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -114,12 +116,6 @@ public void beanView(UsuariosIar usuario) {
         jLabel2.setText("Código");
 
         jLabel3.setText("Apelido");
-
-        jTxtDataNasc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtDataNascActionPerformed(evt);
-            }
-        });
 
         jLabel4.setText("CPF");
 
@@ -200,24 +196,13 @@ public void beanView(UsuariosIar usuario) {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jFtmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addGap(196, 196, 196))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jTxtDataNasc)
-                                        .addGap(140, 140, 140))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(7, 7, 7))
+                            .addComponent(jLabel4)
+                            .addComponent(jFtmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jFmtDataNasc))
+                        .addGap(190, 190, 190))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1)
@@ -237,17 +222,21 @@ public void beanView(UsuariosIar usuario) {
                         .addComponent(jChbAtivo)
                         .addGap(259, 259, 259))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBtnIncluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jBtnAlterar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBtnExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jBtnCancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBtnConfirmar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBtnPesquisar)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBtnIncluir)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jBtnAlterar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBtnExcluir)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jBtnCancelar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBtnConfirmar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBtnPesquisar)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -270,9 +259,9 @@ public void beanView(UsuariosIar usuario) {
                     .addComponent(jLabel4)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTxtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFtmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jFtmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFmtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -304,22 +293,15 @@ public void beanView(UsuariosIar usuario) {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtApelidoActionPerformed
 
-    private void jTxtDataNascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtDataNascActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtDataNascActionPerformed
-
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-        Util.habilitar(true,jFtmtCpf, jTxtDataNasc, jTxtNome, jTxtCodigo, jTxtApelido, jPwfSenha, jCboNivel, jChbAtivo, jBtnCancelar, jBtnConfirmar);
+incluir = true;
+        Util.habilitar(true,jFtmtCpf, jFmtDataNasc, jTxtNome, jTxtCodigo, jTxtApelido, jPwfSenha, jCboNivel, jChbAtivo, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(false, jBtnAlterar, jBtnExcluir, jBtnPesquisar, jBtnIncluir);
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
-        Util.habilitar(false,jFtmtCpf, jTxtDataNasc, jTxtNome, jTxtCodigo, jTxtApelido, jPwfSenha, jCboNivel, jChbAtivo, jBtnCancelar, jBtnConfirmar);
-        Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnPesquisar, jBtnIncluir);
-        Util.limpar(jFtmtCpf, jTxtDataNasc, jTxtNome, jTxtCodigo, jTxtApelido, jPwfSenha, jCboNivel, jChbAtivo);
-        
-         UsuariosIar usuario = viewBean();
+        UsuariosIar usuario = viewBean();
           UsuariosIarDAO usuariosIarDAO = new UsuariosIarDAO();
        
         
@@ -328,13 +310,18 @@ public void beanView(UsuariosIar usuario) {
         } else {
             usuariosIarDAO.update(usuario);
         }
+        Util.habilitar(false,jFtmtCpf, jFmtDataNasc, jTxtNome, jTxtCodigo, jTxtApelido, jPwfSenha, jCboNivel, jChbAtivo, jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnPesquisar, jBtnIncluir);
+        Util.limpar(jFtmtCpf, jFmtDataNasc, jTxtNome, jTxtCodigo, jTxtApelido, jPwfSenha, jCboNivel, jChbAtivo);
+        
+        
         
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
        int resp = JOptionPane.showConfirmDialog(null, "Confirma exclusão", "Deletar o registro", JOptionPane.YES_NO_OPTION);
       if (resp == JOptionPane.YES_OPTION){
-     Util.limpar(jFtmtCpf, jTxtDataNasc, jTxtNome, jTxtCodigo,jTxtApelido, jPwfSenha, jCboNivel, jChbAtivo);
+     Util.limpar(jFtmtCpf, jFmtDataNasc, jTxtNome, jTxtCodigo,jTxtApelido, jPwfSenha, jCboNivel, jChbAtivo);
      JOptionPane.showMessageDialog(null, "Exclusão Realizada com sucesso");
      
 
@@ -343,7 +330,7 @@ public void beanView(UsuariosIar usuario) {
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-       Util.habilitar(true,jFtmtCpf, jTxtDataNasc, jTxtNome, jTxtCodigo, jTxtApelido, jPwfSenha, jCboNivel, jChbAtivo, jBtnCancelar, jBtnConfirmar);
+       Util.habilitar(true,jFtmtCpf, jFmtDataNasc, jTxtNome, jTxtCodigo, jTxtApelido, jPwfSenha, jCboNivel, jChbAtivo, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(false, jBtnAlterar, jBtnExcluir, jBtnPesquisar, jBtnIncluir);
 
     }//GEN-LAST:event_jBtnAlterarActionPerformed
@@ -355,6 +342,7 @@ public void beanView(UsuariosIar usuario) {
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
         // TODO add your handling code here:
       JDlgUsuariosIarPesquisar user = new JDlgUsuariosIarPesquisar(null,true);
+      user.setTelaAnterior(this);
         user.setVisible(true);
 
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
@@ -365,7 +353,7 @@ public void beanView(UsuariosIar usuario) {
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-      Util.habilitar(false,jFtmtCpf, jTxtDataNasc, jTxtNome, jTxtCodigo, jTxtApelido, jPwfSenha, jCboNivel, jChbAtivo, jBtnCancelar, jBtnConfirmar);
+      Util.habilitar(false,jFtmtCpf, jFmtDataNasc, jTxtNome, jTxtCodigo, jTxtApelido, jPwfSenha, jCboNivel, jChbAtivo, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnPesquisar, jBtnIncluir);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
@@ -421,6 +409,7 @@ public void beanView(UsuariosIar usuario) {
     private javax.swing.JButton jBtnPesquisar;
     private javax.swing.JComboBox<String> jCboNivel;
     private javax.swing.JCheckBox jChbAtivo;
+    private javax.swing.JFormattedTextField jFmtDataNasc;
     private javax.swing.JFormattedTextField jFtmtCpf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -432,7 +421,6 @@ public void beanView(UsuariosIar usuario) {
     private javax.swing.JPasswordField jPwfSenha;
     private javax.swing.JTextField jTxtApelido;
     private javax.swing.JTextField jTxtCodigo;
-    private javax.swing.JTextField jTxtDataNasc;
     private javax.swing.JTextField jTxtNome;
     // End of variables declaration//GEN-END:variables
 }

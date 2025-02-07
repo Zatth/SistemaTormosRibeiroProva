@@ -43,7 +43,7 @@ public class JDlgFuncionarioIar extends javax.swing.JDialog {
 }
 
 public void beanView(FuncionarioIar funcionario) {
-    jTxtId.setText(Util.IntToStr(funcionario.getIdFuncionarioIar())); // Converte Byte para String
+    jTxtId.setText(Util.intToStr(funcionario.getIdFuncionarioIar())); // Converte Byte para String
     jTxtNome.setText(funcionario.getNomeFuncionarioIar());
     jTxtRua.setText(funcionario.getRuaFuncionarioIar());
     jTxtBairro.setText(funcionario.getBairroFuncionarioIar());
@@ -279,16 +279,14 @@ public void beanView(FuncionarioIar funcionario) {
     }//GEN-LAST:event_jTxtNomeActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
+        incluir = true;
         Util.habilitar(true,jCboFuncao, jTxtNome,jTxtRua, jTxtNumero,jTxtId,jTxtEstado,jTxtComplemento,jTxtBairro, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(false, jBtnAlterar, jBtnExcluir, jBtnPesquisar, jBtnIncluir);
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
-        Util.habilitar(false, jTxtNome,jCboFuncao, jTxtRua, jTxtNumero,jTxtId,jTxtEstado,jTxtComplemento,jTxtBairro,jBtnCancelar, jBtnConfirmar);
-        Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnPesquisar, jBtnIncluir);
-        Util.limpar(jTxtNome,jCboFuncao, jTxtRua, jTxtNumero,jTxtId,jTxtEstado,jTxtComplemento,jTxtBairro);
-        FuncionarioIar funcionario = viewBean();
+      FuncionarioIar funcionario = viewBean();
         FuncionarioIarDAO funcionarioIarDAO = new FuncionarioIarDAO();
        
          if (incluir == true) {
@@ -296,6 +294,10 @@ public void beanView(FuncionarioIar funcionario) {
         } else {
             funcionarioIarDAO.update(funcionario);
         }
+        Util.habilitar(false, jTxtNome,jCboFuncao, jTxtRua, jTxtNumero,jTxtId,jTxtEstado,jTxtComplemento,jTxtBairro,jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnPesquisar, jBtnIncluir);
+        Util.limpar(jTxtNome,jCboFuncao, jTxtRua, jTxtNumero,jTxtId,jTxtEstado,jTxtComplemento,jTxtBairro);
+        
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
@@ -314,6 +316,7 @@ public void beanView(FuncionarioIar funcionario) {
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
      JDlgFuncionariosIarPesquisar func = new JDlgFuncionariosIarPesquisar(null, true);
+     func.setTelaAnterior(this);
      func.setVisible(true);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 

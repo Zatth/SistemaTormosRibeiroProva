@@ -88,7 +88,7 @@
                   <Component id="jTxtValorUnitario" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTxtTotal" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="131" max="32767" attributes="0"/>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jBtnOk" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBtnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -140,7 +140,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Painel"/>
+        <Property name="text" type="java.lang.String" value="Produto"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="jCboProduto">

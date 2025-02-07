@@ -200,9 +200,6 @@ public class JDlgCompraProdutoIar extends javax.swing.JDialog {
         compraProdutoIar.setProdutoZht((ProdutoZht) jCboProduto.getSelectedItem());
         
         compraProdutoIar.setQuantidadeIar(Util.strToInt(jTxtQuant.getText()));
-        compraProdutoIar.set(Util.strToDouble(jTxtValorUnitario.getText()));;
-        compraProdutoIar.setMeccTotal(Util.strToDouble(jTxtMecc_Total.getText()));
-        jDlgMecc_Compra.controllerCompraProduto.addBean(comprasProdutos);
         setVisible(false);
 
     }//GEN-LAST:event_jBtnOkActionPerformed

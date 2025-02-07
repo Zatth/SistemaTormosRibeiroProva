@@ -46,7 +46,7 @@ public class FuncionarioIarDAO extends DAO_Abstract {
        session.beginTransaction(); // comecei uma transaçao
         Criteria criteria = session.createCriteria(FuncionarioIar.class); // Criteria é uma classe do hibernate para fazer consultas, to criando ela
         // basicamente um Select * from Usuarios
-        criteria.add(Restrictions.eq("idclientes", id)); // o ID vem do parâmetro, essa linha é tipo um where
+        criteria.add(Restrictions.eq("id_funcionario_iar", id)); // o ID vem do parâmetro, essa linha é tipo um where
         ArrayList lista = (ArrayList) criteria.list(); // é um bean
         session.getTransaction().commit();
         return lista.get(0);
@@ -58,7 +58,7 @@ public class FuncionarioIarDAO extends DAO_Abstract {
         Criteria criteria = session.createCriteria(FuncionarioIar.class);
         ArrayList lista = (ArrayList) criteria.list();
         session.getTransaction().commit();
-        return lista;
+        return (ArrayList) lista;
     }
     
 }

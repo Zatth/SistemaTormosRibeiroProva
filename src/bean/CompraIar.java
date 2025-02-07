@@ -1,17 +1,17 @@
 package bean;
-// Generated 13/12/2024 19:27:56 by Hibernate Tools 4.3.1
+// Generated 06/02/2025 17:20:47 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,30 +25,38 @@ import javax.persistence.TemporalType;
 )
 public class CompraIar  implements java.io.Serializable {
 
+
      private int idCompraIar;
+     private FornecedorZht fornecedorZht;
      private FuncionarioIar funcionarioIar;
      private Date dataIar;
      private double valorIar;
      private String pagamentoCompraIar;
+     private Set compraProdutoIars = new HashSet(0);
 
     public CompraIar() {
     }
+
 	
-    public CompraIar(FuncionarioIar funcionarioIar, Date dataIar, double valorIar, String pagamentoCompraIar) {
+    public CompraIar(int idCompraIar, FornecedorZht fornecedorZht, FuncionarioIar funcionarioIar, Date dataIar, double valorIar, String pagamentoCompraIar) {
+        this.idCompraIar = idCompraIar;
+        this.fornecedorZht = fornecedorZht;
         this.funcionarioIar = funcionarioIar;
         this.dataIar = dataIar;
         this.valorIar = valorIar;
         this.pagamentoCompraIar = pagamentoCompraIar;
     }
-    public CompraIar(FuncionarioIar funcionarioIar, Date dataIar, double valorIar, String pagamentoCompraIar, Set compraFornecedorIars, Set compraProdutoIars) {
+    public CompraIar(int idCompraIar, FornecedorZht fornecedorZht, FuncionarioIar funcionarioIar, Date dataIar, double valorIar, String pagamentoCompraIar, Set compraProdutoIars) {
+       this.idCompraIar = idCompraIar;
+       this.fornecedorZht = fornecedorZht;
        this.funcionarioIar = funcionarioIar;
        this.dataIar = dataIar;
        this.valorIar = valorIar;
        this.pagamentoCompraIar = pagamentoCompraIar;
- 
+       this.compraProdutoIars = compraProdutoIars;
     }
    
-     @Id @GeneratedValue(strategy=IDENTITY)
+     @Id 
 
     
     @Column(name="id_compra_iar", unique=true, nullable=false)
@@ -58,6 +66,16 @@ public class CompraIar  implements java.io.Serializable {
     
     public void setIdCompraIar(int idCompraIar) {
         this.idCompraIar = idCompraIar;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="fk_fornecedor_zht", nullable=false)
+    public FornecedorZht getFornecedorZht() {
+        return this.fornecedorZht;
+    }
+    
+    public void setFornecedorZht(FornecedorZht fornecedorZht) {
+        this.fornecedorZht = fornecedorZht;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
@@ -100,12 +118,9 @@ public class CompraIar  implements java.io.Serializable {
         this.pagamentoCompraIar = pagamentoCompraIar;
     }
 
-//    public void setClienteIar(ClienteIar clienteIar) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//}
-//
-//    public Object getClienteIar() {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
+
+
 
 }
+
+

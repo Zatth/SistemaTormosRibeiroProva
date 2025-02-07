@@ -6,7 +6,10 @@ package view;
 
 import bean.ProdutoZht;
 import bean.PromocoesZht;
+import java.text.ParseException;
 import javax.swing.JOptionPane;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 import tools.Util;
 
 /**
@@ -14,7 +17,8 @@ import tools.Util;
  * @author u06614150154
  */
 public class JDlgPromocoesZht extends javax.swing.JDialog {
-
+    private MaskFormatter mascaraData;
+     boolean incluir = true;
     /**
      * Creates new form JDlgPromocoesZht
      */
@@ -30,6 +34,16 @@ public class JDlgPromocoesZht extends javax.swing.JDialog {
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir,jBtnPesquisar);
         Util.limpar(jTxtDesconto, jTxtDescricao, jTxtNome,jCboStatus, jTxtDescricao,jTxtTipo,
                 jTxtId, jFmtDataInicio,jFmtDataTermino);
+         try {
+            mascaraData = new MaskFormatter("##/##/####");
+        } catch (ParseException exc) {
+        }
+        jFmtDataInicio.setFormatterFactory(new DefaultFormatterFactory(mascaraData));
+         try {
+            mascaraData = new MaskFormatter("##/##/####");
+        } catch (ParseException exc) {
+        }
+        jFmtDataTermino.setFormatterFactory(new DefaultFormatterFactory(mascaraData));
     }
     public PromocoesZht viewBean() {
     PromocoesZht promocao = new PromocoesZht();
@@ -350,8 +364,9 @@ Util.limpar(jTxtDesconto, jTxtDescricao, jTxtNome,jCboStatus, jTxtDescricao,jTxt
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
         // TODO add your handling code here:
-         JDlgPesquisarPromocoes JDlgPesquisarPromocoes = new JDlgPesquisarPromocoes(null, true);
-        JDlgPesquisarPromocoes.setVisible(true);
+         JDlgPesquisarPromocoes jDlgPesquisarPromocoes = new JDlgPesquisarPromocoes(null, true);
+         jDlgPesquisarPromocoes.setTelaAnterior(this);
+        jDlgPesquisarPromocoes.setVisible(true);
 
        
     }//GEN-LAST:event_jBtnPesquisarActionPerformed

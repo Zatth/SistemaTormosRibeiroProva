@@ -6,6 +6,9 @@
 package view;
 
 import bean.ProdutoZht;
+import bean.VendasProdutoZht;
+import dao.ProdutoZhtDAO;
+import java.util.List;
 import tools.Util;
 
 /**
@@ -13,13 +16,25 @@ import tools.Util;
  * @author Zah
  */
 public class JDlgVendasProdutosZht extends javax.swing.JDialog {
-
+        private JDlgVendasZht jDlgVendasZht;
     /**
      * Creates new form JDlgVendasProdutosZht
      */
     public JDlgVendasProdutosZht(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();
+         initComponents();
+         setLocationRelativeTo(null);
+          setTitle("Produtinho");
+          
+         ProdutoZhtDAO produtoDAO = new ProdutoZhtDAO();
+        List lista = produtoDAO.listAll();
+        for (int i = 0; i < lista.size(); i++) {
+            jCboProduto.addItem((ProdutoZht) lista.get(i)); // for para chamar o list dos clientes PQ TA DANDO ERROOOOOOOOOO
+
+        }
+    }
+ public void setTelaAnterior(JDlgVendasZht jDlgVendasZht) {
+        this.jDlgVendasZht = jDlgVendasZht;
     }
 
     /**
@@ -75,7 +90,7 @@ public class JDlgVendasProdutosZht extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setText("Painel");
+        jLabel1.setText("Produto");
 
         jCboProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,7 +167,7 @@ public class JDlgVendasProdutosZht extends javax.swing.JDialog {
                     .addComponent(jTxtQuant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTxtValorUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnOk)
                     .addComponent(jBtnCancelar))
@@ -176,7 +191,12 @@ public class JDlgVendasProdutosZht extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-        // TODO add your handling code here:
+          VendasProdutoZht vendasProdutoZht = new VendasProdutoZht();
+        vendasProdutoZht.setIdVendaProdutoZht(0); // tinha q se autoincrement :9
+        vendasProdutoZht.setProdutoZht((ProdutoZht) jCboProduto.getSelectedItem());
+        vendasProdutoZht.setQuantidadeZht((int) Util.strToDouble(jTxtQuant.getText()));
+        vendasProdutoZht.setValorUnitarioZht((int) Util.strToDouble(jTxtValorUnitario.getText()));
+        jDlgVendasZht.controllerVendasProdutosZht.addBean(vendasProdutoZht);
         setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 

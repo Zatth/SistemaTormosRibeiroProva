@@ -32,7 +32,7 @@ public class ControllerVendasZht extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 6;
     };
 
     @Override
@@ -44,13 +44,19 @@ public class ControllerVendasZht extends AbstractTableModel {
             return compraIar.getIdVendasZht();
         }
         if (columnIndex == 1){
-            return compraIar.getClienteIar();
+            return compraIar.getDataVendaZht();
         }
         if (columnIndex == 2){
-            return compraIar.getValorVendaZht();
+            return compraIar.getClienteIar();
         }
         if (columnIndex == 3){
-            return compraIar.getQuantidadeVendaZht();
+            return compraIar.getFuncionarioIar();
+        }
+        if (columnIndex == 4){
+            return compraIar.getTotalZht();
+        }
+        if (columnIndex == 5){
+            return compraIar.getPagamentoVendaZht();
         }
     return "";
     }
@@ -59,14 +65,20 @@ public class ControllerVendasZht extends AbstractTableModel {
         if (columnIndex == 0) {
             return "Código";
         }
+        if (columnIndex == 0) {
+            return "Data";
+        }
         if (columnIndex == 1) {
             return "Cliente";
+        }
+        if (columnIndex == 1) {
+            return "Funcionario";
         }
         if (columnIndex == 2) {
             return "Valor Venda";
         }
         if (columnIndex == 3) {
-            return "Qnt Venda";
+            return "Pagamento Venda";
         }
         return "";
     }

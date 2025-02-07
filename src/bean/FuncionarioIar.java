@@ -1,13 +1,12 @@
 package bean;
-// Generated 13/12/2024 19:27:56 by Hibernate Tools 4.3.1
+// Generated 06/02/2025 17:20:47 by Hibernate Tools 4.3.1
 
 
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -30,12 +29,13 @@ public class FuncionarioIar  implements java.io.Serializable {
      private String complementoFuncionarioIar;
      private int numCasaFuncionarioIar;
      private String funcaoFuncionarioIar;
-
+ 
     public FuncionarioIar() {
     }
 
 	
-    public FuncionarioIar(String nomeFuncionarioIar, String ruaFuncionarioIar, String bairroFuncionarioIar, String estadoFuncionarioIar, String complementoFuncionarioIar, int numCasaFuncionarioIar, String funcaoFuncionarioIar) {
+    public FuncionarioIar(int idFuncionarioIar, String nomeFuncionarioIar, String ruaFuncionarioIar, String bairroFuncionarioIar, String estadoFuncionarioIar, String complementoFuncionarioIar, int numCasaFuncionarioIar, String funcaoFuncionarioIar) {
+        this.idFuncionarioIar = idFuncionarioIar;
         this.nomeFuncionarioIar = nomeFuncionarioIar;
         this.ruaFuncionarioIar = ruaFuncionarioIar;
         this.bairroFuncionarioIar = bairroFuncionarioIar;
@@ -44,7 +44,8 @@ public class FuncionarioIar  implements java.io.Serializable {
         this.numCasaFuncionarioIar = numCasaFuncionarioIar;
         this.funcaoFuncionarioIar = funcaoFuncionarioIar;
     }
-    public FuncionarioIar(String nomeFuncionarioIar, String ruaFuncionarioIar, String bairroFuncionarioIar, String estadoFuncionarioIar, String complementoFuncionarioIar, int numCasaFuncionarioIar, String funcaoFuncionarioIar, Set compraIars, Set vendasZhts) {
+    public FuncionarioIar(int idFuncionarioIar, String nomeFuncionarioIar, String ruaFuncionarioIar, String bairroFuncionarioIar, String estadoFuncionarioIar, String complementoFuncionarioIar, int numCasaFuncionarioIar, String funcaoFuncionarioIar, Set compraIars, Set vendasZhts) {
+       this.idFuncionarioIar = idFuncionarioIar;
        this.nomeFuncionarioIar = nomeFuncionarioIar;
        this.ruaFuncionarioIar = ruaFuncionarioIar;
        this.bairroFuncionarioIar = bairroFuncionarioIar;
@@ -52,10 +53,9 @@ public class FuncionarioIar  implements java.io.Serializable {
        this.complementoFuncionarioIar = complementoFuncionarioIar;
        this.numCasaFuncionarioIar = numCasaFuncionarioIar;
        this.funcaoFuncionarioIar = funcaoFuncionarioIar;
-     
     }
    
-     @Id @GeneratedValue(strategy=IDENTITY)
+     @Id 
 
     
     @Column(name="id_funcionario_iar", unique=true, nullable=false)
@@ -136,25 +136,21 @@ public class FuncionarioIar  implements java.io.Serializable {
     public void setFuncaoFuncionarioIar(String funcaoFuncionarioIar) {
         this.funcaoFuncionarioIar = funcaoFuncionarioIar;
     }
-    
-    
-    @Override
-    public String toString() {
+     @Override
+    public String toString(){
         return this.idFuncionarioIar + " - " + this.nomeFuncionarioIar;
-    }
-
+    };
+    
     @Override
     public boolean equals(Object object) {
         if (object instanceof ClienteIar) {
             FuncionarioIar funcionario = (FuncionarioIar) object;
-            if (funcionario.getIdFuncionarioIar() == this.getIdFuncionarioIar()) {
+            if (funcionario.getIdFuncionarioIar()== this.getIdFuncionarioIar()) {
                 return true;
             }
         }
         return false;
-    }
-
-
+    };
 
 
 

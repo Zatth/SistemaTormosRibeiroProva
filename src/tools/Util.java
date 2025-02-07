@@ -91,8 +91,4 @@ public class Util {
          return resposta == JOptionPane.YES_OPTION;
      }
 
-    public static String IntToStr(int idFuncionarioIar) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

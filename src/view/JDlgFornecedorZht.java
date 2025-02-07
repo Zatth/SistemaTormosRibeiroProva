@@ -412,36 +412,6 @@ public void beanView(FornecedorZht fornecedor) {
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
-        // TODO add your handling code here:
-//        FornecedorZht fornecedor = new FornecedorZht();
-//        int cod = Integer.valueOf(jTxtId.getText());
-//        fornecedor.setIdfornecedor_zht(cod);
-//        fornecedor.setNome_zht(jTxtNome.getText());
-//        fornecedor.setCnpj_zht(jFtmtCnpj.getText());
-//        fornecedor.setEndereco_zht(jTxtEndereco.getText());     
-//        fornecedor.setEmail_zht(jTxtEmail.getText());
-//        fornecedor.setCep_zht(jFtmtCep.getText());
-//        fornecedor.setCidade_zht(jTxtCidade.getText());
-//        fornecedor.setEstado_zht(jTxtEstado.getText());
-//        fornecedor.setNome_funcionario_zht(jTxtNomeFuncionario.getText());
-//        fornecedor.setBairro_zht(jTxtBairro.getText());
-//        fornecedor.setRua_zht(jTxtRua.getText());
-//        fornecedor.setComplemento_zht(jTxtComplemento.getText());
-//        fornecedor.setContato_zht(jTxtContato.getText());
-//        fornecedor.setPais_zht(jTxtPais.getText());
-//        fornecedor.setDdd_zht(jTxtDdd.getText());
-//        
-//         FornecedorZhtDao fornecedorDao = new FornecedorZhtDao();
-//        fornecedorDao.insert(fornecedor);
-//        
-//        limpar();
-        //desabilitar();
-        Util.habilitar(false, jTxtId, jFtmtCnpj, jTxtNome,jTxtEmail, jFtmtCep, jTxtEndereco, jTxtCidade, jTxtEstado,
-              jTxtNomeFuncionario, jTxtBairro, jTxtRua, jTxtComplemento, jTxtContato, jTxtPais, jTxtDdd, 
-              jBtnConfirmar, jBtnCancelar);
-        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir,jBtnPesquisar);
-         Util.limpar(jTxtId, jFtmtCnpj, jTxtNome,jTxtEmail, jFtmtCep, jTxtEndereco, jTxtCidade, jTxtEstado, jTxtNomeFuncionario, jTxtBairro, jTxtRua,
-              jTxtComplemento, jTxtContato, jTxtPais, jTxtDdd);
           FornecedorZht fornecedor = viewBean();
           FornecedorZhtDAO fornecedorZhtDAO = new FornecedorZhtDAO();
         
@@ -450,6 +420,12 @@ public void beanView(FornecedorZht fornecedor) {
         } else {
             fornecedorZhtDAO.update(fornecedor);
         }
+        Util.habilitar(false, jTxtId, jFtmtCnpj, jTxtNome,jTxtEmail, jFtmtCep, jTxtEndereco, jTxtCidade, jTxtEstado,
+              jTxtNomeFuncionario, jTxtBairro, jTxtRua, jTxtComplemento, jTxtContato, jTxtPais, jTxtDdd, 
+              jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir,jBtnPesquisar);
+         Util.limpar(jTxtId, jFtmtCnpj, jTxtNome,jTxtEmail, jFtmtCep, jTxtEndereco, jTxtCidade, jTxtEstado, jTxtNomeFuncionario, jTxtBairro, jTxtRua,
+              jTxtComplemento, jTxtContato, jTxtPais, jTxtDdd);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed

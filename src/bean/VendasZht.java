@@ -1,9 +1,9 @@
 package bean;
-// Generated 13/12/2024 19:27:56 by Hibernate Tools 4.3.1
-
+// Generated 06/02/2025 17:20:47 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,8 +29,7 @@ public class VendasZht  implements java.io.Serializable {
      private int idVendasZht;
      private ClienteIar clienteIar;
      private FuncionarioIar funcionarioIar;
-     private int quantidadeVendaZht;
-     private double valorVendaZht;
+     private double totalZht;
      private Date dataVendaZht;
      private String pagamentoVendaZht;
 
@@ -38,14 +37,21 @@ public class VendasZht  implements java.io.Serializable {
     }
 
 	
-    public VendasZht(int idVendasZht, ClienteIar clienteIar, FuncionarioIar funcionarioIar, int quantidadeVendaZht, double valorVendaZht, Date dataVendaZht, String pagamentoVendaZht) {
+    public VendasZht(int idVendasZht, ClienteIar clienteIar, FuncionarioIar funcionarioIar, double totalZht, Date dataVendaZht, String pagamentoVendaZht) {
         this.idVendasZht = idVendasZht;
         this.clienteIar = clienteIar;
         this.funcionarioIar = funcionarioIar;
-        this.quantidadeVendaZht = quantidadeVendaZht;
-        this.valorVendaZht = valorVendaZht;
+        this.totalZht = totalZht;
         this.dataVendaZht = dataVendaZht;
         this.pagamentoVendaZht = pagamentoVendaZht;
+    }
+    public VendasZht(int idVendasZht, ClienteIar clienteIar, FuncionarioIar funcionarioIar, double totalZht, Date dataVendaZht, String pagamentoVendaZht, Set vendasProdutoZhts) {
+       this.idVendasZht = idVendasZht;
+       this.clienteIar = clienteIar;
+       this.funcionarioIar = funcionarioIar;
+       this.totalZht = totalZht;
+       this.dataVendaZht = dataVendaZht;
+       this.pagamentoVendaZht = pagamentoVendaZht;
     }
    
      @Id 
@@ -81,23 +87,13 @@ public class VendasZht  implements java.io.Serializable {
     }
 
     
-    @Column(name="quantidade_venda_zht", nullable=false)
-    public int getQuantidadeVendaZht() {
-        return this.quantidadeVendaZht;
+    @Column(name="total_zht", nullable=false, precision=7)
+    public double getTotalZht() {
+        return this.totalZht;
     }
     
-    public void setQuantidadeVendaZht(int quantidadeVendaZht) {
-        this.quantidadeVendaZht = quantidadeVendaZht;
-    }
-
-    
-    @Column(name="valor_venda_zht", nullable=false, precision=7)
-    public double getValorVendaZht() {
-        return this.valorVendaZht;
-    }
-    
-    public void setValorVendaZht(double valorVendaZht) {
-        this.valorVendaZht = valorVendaZht;
+    public void setTotalZht(double totalZht) {
+        this.totalZht = totalZht;
     }
 
     @Temporal(TemporalType.TIMESTAMP)

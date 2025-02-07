@@ -1,12 +1,10 @@
 package bean;
-// Generated 13/12/2024 19:27:56 by Hibernate Tools 4.3.1
+// Generated 06/02/2025 17:20:47 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,7 +33,8 @@ public class UsuariosIar  implements java.io.Serializable {
     }
 
 	
-    public UsuariosIar(String nomeUsuarioIar, String apelidoIar, String cpfIar, String senhaIar, String nivelIar, String ativoIar) {
+    public UsuariosIar(int idUsuariosIar, String nomeUsuarioIar, String apelidoIar, String cpfIar, String senhaIar, String nivelIar, String ativoIar) {
+        this.idUsuariosIar = idUsuariosIar;
         this.nomeUsuarioIar = nomeUsuarioIar;
         this.apelidoIar = apelidoIar;
         this.cpfIar = cpfIar;
@@ -43,7 +42,8 @@ public class UsuariosIar  implements java.io.Serializable {
         this.nivelIar = nivelIar;
         this.ativoIar = ativoIar;
     }
-    public UsuariosIar(String nomeUsuarioIar, String apelidoIar, String cpfIar, Date dataNascimentoIar, String senhaIar, String nivelIar, String ativoIar) {
+    public UsuariosIar(int idUsuariosIar, String nomeUsuarioIar, String apelidoIar, String cpfIar, Date dataNascimentoIar, String senhaIar, String nivelIar, String ativoIar) {
+       this.idUsuariosIar = idUsuariosIar;
        this.nomeUsuarioIar = nomeUsuarioIar;
        this.apelidoIar = apelidoIar;
        this.cpfIar = cpfIar;
@@ -53,7 +53,7 @@ public class UsuariosIar  implements java.io.Serializable {
        this.ativoIar = ativoIar;
     }
    
-     @Id @GeneratedValue(strategy=IDENTITY)
+     @Id 
 
     
     @Column(name="id_usuarios_iar", unique=true, nullable=false)
